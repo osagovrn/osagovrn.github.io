@@ -1,5 +1,5 @@
 window.SITE = {
-  url: '',
+  url: 'https://2020yvwvy2020.github.io/',
   verify: {
     yandex: '',
     google: ''

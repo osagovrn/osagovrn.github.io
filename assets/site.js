@@ -419,6 +419,9 @@
   window.trackGoal = trackGoal;
 
   function initAnalytics() {
+    if (window.__osagoAnalyticsInit) return;
+    window.__osagoAnalyticsInit = true;
+
     var cfg = window.SITE || {};
     var analytics = cfg.analytics || {};
     var ymId = analytics.yandexMetrikaId;
@@ -426,23 +429,38 @@
     var adsId = analytics.googleAdsId;
 
     if (ymId) {
+      var ymTagUrl = 'https://mc.yandex.ru/metrika/tag.js?id=' + encodeURIComponent(String(ymId));
       (function (m, e, t, r, i, k, a) {
         m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
         m[i].l = 1 * new Date();
-        k = e.createElement(t); a = e.getElementsByTagName(t)[0];
-        k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
-      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
-      window.ym(ymId, 'init', {
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) return;
+        }
+        k = e.createElement(t);
+        a = e.getElementsByTagName(t)[0];
+        k.async = 1;
+        k.src = r;
+        a.parentNode.insertBefore(k, a);
+      })(window, document, 'script', ymTagUrl, 'ym');
+
+      window.ym(Number(ymId) || ymId, 'init', {
         clickmap: true,
         trackLinks: true,
         accurateTrackBounce: true,
         webvisor: true,
-        defer: true
+        ecommerce: 'dataLayer'
       });
 
-      var noscript = document.createElement('noscript');
-      noscript.innerHTML = '<div><img src="https://mc.yandex.ru/watch/' + ymId + '" style="position:absolute;left:-9999px;" alt=""></div>';
-      document.body.appendChild(noscript);
+      function appendMetrikaNoscript() {
+        if (document.getElementById('ym-noscript-' + ymId)) return;
+        var noscript = document.createElement('noscript');
+        noscript.id = 'ym-noscript-' + ymId;
+        noscript.innerHTML = '<div><img src="https://mc.yandex.ru/watch/' + ymId + '" style="position:absolute;left:-9999px;" alt=""></div>';
+        (document.body || document.documentElement).appendChild(noscript);
+      }
+
+      if (document.body) appendMetrikaNoscript();
+      else document.addEventListener('DOMContentLoaded', appendMetrikaNoscript);
     }
 
     if (gaId || adsId) {
@@ -495,6 +513,8 @@
     scrollToOrderTarget({ instant: true });
   }
 
+  initAnalytics();
+
   document.addEventListener('DOMContentLoaded', function () {
     initScrollLinks();
     initEngagementTracking();
@@ -505,6 +525,5 @@
     initOrderIframeLazyLoad();
     initMobileStickyCta();
     initDeferredOrderScroll();
-    initAnalytics();
   });
 })();
