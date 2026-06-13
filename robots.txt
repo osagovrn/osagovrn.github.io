@@ -32,4 +32,7 @@ Allow: /
 Sitemap: https://osagovrn.github.io/sitemap.xml
 Sitemap: https://osagovrn.github.io/sitemap.txt
 
+# Главное зеркало для Яндекса (без www)
+Host: osagovrn.github.io
+
 # Краткое описание сайта для LLM: /llms.txt

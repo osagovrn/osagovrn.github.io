@@ -35,11 +35,15 @@
   assets/env.js          — пути, HTTPS
 
 ЧТО ДОРАБОТАТЬ
-  - Загрузить обновлённые файлы на GitHub (sitemap, robots, site.config)
-  - Заполнить реквизиты оператора в site.config.js (legal.*)
-  - Google Analytics (если нужен)
-  - Установить Git для удобного деплоя
-  - Яндекс.Вебмастер / Google Search Console — добавить новый домен
+  - Загрузить robots.txt на GitHub (Host: osagovrn.github.io)
+  - Вебмастер: sitemap, переобход, диагностика, метрика — см. ИНСТРУКЦИЯ_ДЛЯ_ВАС.txt
+  - Google Search Console + sitemap
+  - Яндекс.Бизнес
+  - Заполнить реквизиты оператора (legal.*) — шаблон: assets/legal.template.js
+  - Переезд на www — ждём отмены/завершения заявки, не трогать
+
+ИНСТРУКЦИЯ ДЛЯ ВАС
+  C:\Users\2020y\Projects\osago\ИНСТРУКЦИЯ_ДЛЯ_ВАС.txt
 
 БЭКАП
   C:\Users\2020y\Projects\osago-backup.zip
