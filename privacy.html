@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=optional&subset=cyrillic,cyrillic-ext,latin,latin-ext">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
     html, body {
@@ -46,8 +47,12 @@
   <script>
     (function () {
       var root = window.SITE_ROOT || '/';
-      var fav = document.querySelector('link[rel="icon"]');
-      if (fav) fav.href = root + 'favicon.svg';
+      document.querySelectorAll('link[rel="icon"]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (href && href.indexOf('://') === -1 && href.charAt(0) !== '/') {
+          link.href = root + href;
+        }
+      });
     })();
   </script>
 </head>
@@ -139,9 +144,6 @@
   <script src="assets/legal.js"></script>
   <script>
     (function () {
-      var root = window.SITE_ROOT || '/';
-      var fav = document.querySelector('link[rel="icon"]');
-      if (fav) fav.href = root + 'favicon.svg';
       renderSiteLegal('privacy-operator', { showConfigHint: true });
     })();
   </script>

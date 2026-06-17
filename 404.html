@@ -50,12 +50,17 @@
     }
     a { color: #0D9488; font-weight: 600; }
   </style>
+  <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script>
     (function () {
       var root = window.SITE_ROOT || '/';
-      var fav = document.querySelector('link[rel="icon"]');
-      if (fav) fav.href = root + 'favicon.svg';
+      document.querySelectorAll('link[rel="icon"]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (href && href.indexOf('://') === -1 && href.charAt(0) !== '/') {
+          link.href = root + href;
+        }
+      });
     })();
   </script>
 </head>
