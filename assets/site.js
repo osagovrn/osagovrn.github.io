@@ -111,64 +111,25 @@
 
   function loadOrderIframe() {
     var iframe = document.getElementById('ppdwi');
-    if (!iframe || iframe.src) return;
+    if (!iframe || iframe.getAttribute('src')) return;
     var src = iframe.getAttribute('data-src');
     if (!src) return;
-    iframe.src = src;
-    if (!document.getElementById('ppdw-script')) {
-      var s = document.createElement('script');
-      s.id = 'ppdw-script';
-      s.src = 'https://b2c.pampadu.ru/ppdw.js';
-      s.defer = true;
-      document.body.appendChild(s);
+    iframe.setAttribute('src', src);
+    ensurePpdwScript();
+  }
+
+  function ensurePpdwScript() {
+    if (document.getElementById('ppdw-script') || document.querySelector('script[src*="ppdw.js"]')) {
+      return;
     }
+    var s = document.createElement('script');
+    s.id = 'ppdw-script';
+    s.src = 'https://b2c.pampadu.ru/ppdw.js';
+    document.body.appendChild(s);
   }
 
   function initOrderIframeLazyLoad() {
-    var section = document.getElementById('oformit-polisa');
-    var iframe = document.getElementById('ppdwi');
-    if (!section || !iframe) return;
-
-    function activate() {
-      loadOrderIframe();
-    }
-
-    if (iframe.src) return;
-
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (entries) {
-        for (var i = 0; i < entries.length; i++) {
-          if (entries[i].isIntersecting) {
-            activate();
-            observer.disconnect();
-            return;
-          }
-        }
-      }, {
-        root: null,
-        rootMargin: '240px 0px 240px 0px',
-        threshold: 0
-      });
-      observer.observe(section);
-      return;
-    }
-
-    var triggered = false;
-    function checkVisible() {
-      if (triggered || iframe.src) return;
-      var rect = section.getBoundingClientRect();
-      var viewHeight = window.innerHeight || document.documentElement.clientHeight;
-      if (rect.top < viewHeight + 240 && rect.bottom > -240) {
-        triggered = true;
-        activate();
-        window.removeEventListener('scroll', checkVisible);
-        window.removeEventListener('resize', checkVisible);
-      }
-    }
-
-    window.addEventListener('scroll', checkVisible, { passive: true });
-    window.addEventListener('resize', checkVisible, { passive: true });
-    checkVisible();
+    // Виджет подключён по официальной схеме Pampadu: src и ppdw.js в index.html.
   }
 
   function initEngagementTracking() {
@@ -190,7 +151,11 @@
   }
 
   function preloadOrderWidgetScript() {
-    if (document.getElementById('ppdw-script-preload') || document.getElementById('ppdw-script')) {
+    if (
+      document.getElementById('ppdw-script-preload') ||
+      document.getElementById('ppdw-script') ||
+      document.querySelector('script[src*="ppdw.js"]')
+    ) {
       return;
     }
     var link = document.createElement('link');
@@ -616,6 +581,20 @@
     scrollToOrderTarget({ instant: true });
   }
 
+  function initWidgetDirectLink() {
+    var cfg = window.SITE || {};
+    var url = cfg.partner && cfg.partner.widgetUrl;
+    if (!url) return;
+
+    var link = document.getElementById('widget-direct-link');
+    if (link) {
+      link.href = url;
+      link.addEventListener('click', function () {
+        trackGoal('click_widget_direct');
+      });
+    }
+  }
+
   initAnalytics();
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -628,5 +607,6 @@
     initOrderIframeLazyLoad();
     initMobileStickyCta();
     initDeferredOrderScroll();
+    initWidgetDirectLink();
   });
 })();
