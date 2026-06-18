@@ -922,17 +922,19 @@
 
     .site-brand {
       min-width: 0;
+      flex-shrink: 0;
     }
 
     .site-brand__title {
-      font-size: clamp(0.8125rem, 0.75vw + 0.55rem, 1.125rem);
-      line-height: 1.15;
+      font-size: clamp(0.8125rem, 0.75vw + 0.55rem, 1rem);
+      line-height: 1.2;
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
 
     .site-brand__subtitle {
-      font-size: clamp(0.6875rem, 0.45vw + 0.45rem, 0.8125rem);
-      line-height: 1.15;
+      font-size: clamp(0.75rem, 0.45vw + 0.5rem, 0.9375rem);
+      line-height: 1.2;
       white-space: nowrap;
     }
 
@@ -945,34 +947,52 @@
     }
 
     .header-brand-link {
-      flex: 0 1 auto;
+      flex: 0 0 auto;
       min-width: 0;
-      max-width: min(100%, 11rem);
+      max-width: min(100%, 10.5rem);
     }
 
     .header-actions {
-      flex: 0 0 auto;
+      flex: 1 1 auto;
       min-width: 0;
+      justify-content: flex-end;
     }
 
     .desktop-nav {
       flex-wrap: nowrap;
+      min-width: 0;
     }
 
     @media (min-width: 1024px) {
       .header-brand-link { max-width: none; }
+      .site-brand__title { display: none; }
+      .site-brand__subtitle {
+        font-size: 1.0625rem;
+        font-weight: 700;
+        color: var(--color-brand-dark);
+      }
       .desktop-nav a {
-        padding-left: 0.625rem;
-        padding-right: 0.625rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         font-size: 0.8125rem;
       }
     }
 
     @media (min-width: 1280px) {
+      .site-brand__subtitle {
+        font-size: 1.125rem;
+      }
       .desktop-nav a {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
         font-size: 0.875rem;
+      }
+    }
+
+    @media (min-width: 1536px) {
+      .desktop-nav a {
+        padding-left: 0.875rem;
+        padding-right: 0.875rem;
       }
     }
 
@@ -1263,8 +1283,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
           </div>
-          <div class="site-brand min-w-0">
-            <span class="site-brand__title block font-bold text-brand-900 truncate">Страхование</span>
+          <div class="site-brand">
+            <span class="site-brand__title block font-bold text-brand-900">Страхование</span>
             <span class="site-brand__subtitle block font-medium text-brand-600">ОСАГО / КАСКО</span>
           </div>
         </a>
