@@ -25,6 +25,7 @@
     var bar = document.getElementById('mobile-sticky-cta');
     if (!bar || bar.hidden) return 0;
     if (window.matchMedia('(min-width: 768px)').matches) return 0;
+    if (window.scrollY < 240) return 0;
     return Math.ceil(bar.getBoundingClientRect().height) + 8;
   }
 
@@ -66,7 +67,11 @@
       } catch (e) {}
     }
 
-    window.scrollTo(0, targetTop);
+    try {
+      window.scrollTo({ top: targetTop, behavior: 'auto' });
+    } catch (e) {
+      window.scrollTo(0, targetTop);
+    }
   }
 
   function scrollToHash(hash, options) {
@@ -81,6 +86,13 @@
 
     var el = document.getElementById(id);
     if (!el) return false;
+
+    var heading = el.querySelector('h1, h2, h3');
+    if (heading && el.contains(heading)) {
+      scrollToElement(heading, options);
+      return true;
+    }
+
     scrollToElement(el, options);
     return true;
   }
@@ -107,6 +119,7 @@
     if (!target) return;
 
     if (options.loadIframe !== false) {
+      window.__osagoScrollOrderPending = true;
       loadOrderIframe();
     }
 
@@ -120,6 +133,14 @@
     if (!src) return;
     iframe.setAttribute('src', src);
     ensurePpdwScript();
+    iframe.addEventListener('load', function () {
+      if (!window.__osagoScrollOrderPending) return;
+      window.__osagoScrollOrderPending = false;
+      window.setTimeout(function () {
+        var target = document.getElementById('oformit-polisa-target');
+        if (target) scrollToElement(target, { instant: true });
+      }, 100);
+    }, { once: true });
   }
 
   function ensurePpdwScript() {
@@ -244,6 +265,31 @@
     onScroll();
   }
 
+  function waitForHeaderStable(callback) {
+    var header = document.querySelector('header');
+    if (!header) {
+      window.requestAnimationFrame(callback);
+      return;
+    }
+
+    var last = header.getBoundingClientRect().height;
+    var stable = 0;
+    var start = Date.now();
+
+    function tick() {
+      var height = header.getBoundingClientRect().height;
+      if (Math.abs(height - last) < 1) stable += 1;
+      else {
+        stable = 0;
+        last = height;
+      }
+      if (stable >= 4 || Date.now() - start > 500) callback();
+      else window.requestAnimationFrame(tick);
+    }
+
+    window.requestAnimationFrame(tick);
+  }
+
   function initScrollLinks() {
     var menu = document.getElementById('mobile-menu');
 
@@ -269,17 +315,20 @@
 
         var runScroll = function () {
           var isOrder = id === 'oformit-polisa';
-          scrollToHash(href, { instant: false });
+          scrollToHash(href, { instant: !!fromMobileMenu });
           if (isOrder) trackGoal('click_order_form');
           if (history.replaceState) {
             history.replaceState(null, '', getPagePath() + href);
           }
+          if (fromMobileMenu) {
+            window.setTimeout(function () {
+              scrollToHash(href, { instant: true });
+            }, 60);
+          }
         };
 
         if (fromMobileMenu) {
-          window.requestAnimationFrame(function () {
-            window.requestAnimationFrame(runScroll);
-          });
+          waitForHeaderStable(runScroll);
         } else {
           runScroll();
         }
