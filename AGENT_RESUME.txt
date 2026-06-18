@@ -1,0 +1,93 @@
+ИНСТРУКЦИЯ ДЛЯ CURSOR AGENT — ПРОЕКТ «ОСАГО»
+=============================================
+Обновлено: 13.06.2026 (финальное сохранение сессии)
+
+## 1. ГДЕ ПРОЕКТ
+   Путь:     C:\Users\2020y\Projects\osago
+   Бэкап:    C:\Users\2020y\Projects\osago-backup.zip
+   Живой:    https://osagovrn.github.io/
+   GitHub:   https://github.com/osagovrn/osagovrn (Pages, без Git CLI у пользователя)
+
+   Другой проект пользователя: C:\Users\2020y\Projects\magazin
+
+## 2. БЫСТРЫЙ СТАРТ
+   cd C:\Users\2020y\Projects\osago
+   npx serve -l 3001 .
+   → http://localhost:3001
+
+   Бэкап:  scripts\backup.ps1
+   Проверка ссылок: node scripts\check-links.mjs http://127.0.0.1:3001
+
+## 3. СТЕК
+   Статический HTML + Tailwind CDN + vanilla JS
+   Виджет оформления: b2c.pampadu.ru (iframe #ppdwi)
+   Деплой: GitHub Pages (.github/workflows/pages.yml)
+   Git на машине пользователя НЕ установлен — загрузка через браузер GitHub
+
+## 4. КЛЮЧЕВЫЕ ФАЙЛЫ
+   index.html              — главная (~1900 строк)
+   assets/site.config.js   — URL, регион, метрика, legal, partner
+   assets/site.js          — прокрутка, меню, НСИС-проверка, виджет, метрика
+   assets/env.js           — HTTPS, base path, hash #oformit-polisa
+   assets/legal.js         — реквизиты оператора в футере
+   privacy.html            — политика (noindex)
+   robots.txt              — Host: osagovrn.github.io
+   sitemap.xml, llms.txt, og-image.png
+
+## 5. site.config.js (актуально)
+   url: https://osagovrn.github.io/
+   region: по всей России, дистанционно
+   verify.yandex: ea57d1fd75c2d5d0
+   yandexMetrikaId: 109807317
+   legal.* — ПУСТО (пользователь отложил)
+   partner — ООО «Страховые партнеры» / Pampadu
+
+## 6. КОНТАКТЫ НА САЙТЕ
+   Тел:   +79507678575 / 8 (950) 767-85-75
+   Email: 2020yvwvy2020@gmail.com
+   Telegram: t.me/+79507678575
+   MAX: max.ru/+79191831407
+
+## 7. ЧТО СДЕЛАНО (SEO + сайт)
+   [x] Лендинг ОСАГО/КАСКО, FAQ, блоки доверия, «Как это работает»
+   [x] География: по всей России (не только Воронеж)
+   [x] SEO: Яндекс.Вебмастер, Google Search Console, sitemap, Метрика привязана
+   [x] robots.txt Host, og-image.png, llms.txt
+   [x] Прокрутка по якорям с учётом шапки и моб. панели (site.js)
+   [x] Проверка полиса: госномер/VIN → копирование → nsis.ru
+   [x] КБМ: вкладка + ссылка на НСИС (полная проверка только через Госуслуги на nsis.ru)
+   [x] Документы: сканы не нужны, страхователь≠собственник, юрлица — звонок
+   [x] Пример госномера исправлен: А123АА777 (не А123БВ777 — буква Б недопустима)
+   [x] privacy.html: ссылка «На главную» → index.html
+
+## 8. ЧТО НЕ ДЕЛАЕМ (решение пользователя)
+   [ ] Яндекс.Бизнес
+   [ ] Реквизиты оператора (legal.*)
+   [ ] Ссылки в Telegram/MAX для продвижения
+   [ ] Боты/накрутка
+
+## 9. ЗАГРУЗИТЬ НА GITHUB (если локальное новее живого)
+   index.html
+   assets/site.config.js
+   assets/site.js
+   privacy.html
+   og-image.png, og-image.svg
+   llms.txt
+   robots.txt (если ещё не с Host)
+
+## 10. ВАЖНЫЕ ПРЕДУПРЕЖДЕНИЯ
+   - НЕ включать www — на GitHub Pages не работает SSL
+   - В Вебмастере случайная заявка переезда на www — НЕ ТРОГАТЬ, ждать
+   - privacy.html: noindex (так и задумано)
+   - КБМ на сайте не считается — только переход на nsis.ru + авторизация
+
+## 11. ДОКУМЕНТЫ ДЛЯ ПОЛЬЗОВАТЕЛЯ
+   ЗАВТРА.txt
+   ИНСТРУКЦИЯ_ДЛЯ_ВАС.txt
+   ДИРЕКТ_ОБЪЯВЛЕНИЯ.txt
+   assets/legal.template.js
+
+## 12. ПОСЛЕДНИЕ ИЗМЕНЕНИЯ В КОДЕ (13.06.2026)
+   site.js: normalizeVehicle для госномеров, initScrollLinks для всех якорей
+   index.html: документы/FAQ про паспорт и Pampadu, scroll-margin CSS
+   privacy.html: home-link → index.html

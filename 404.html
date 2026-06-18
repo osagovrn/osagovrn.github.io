@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Страница не найдена — ОСАГО / КАСКО</title>
+  <script>
+    (function () {
+      function getSiteRoot() {
+        if (window.SITE && window.SITE.url) {
+          try {
+            return new URL(window.SITE.url, window.location.origin).pathname.replace(/\/?$/, '/');
+          } catch (e) {}
+        }
+        var host = window.location.hostname;
+        var parts = window.location.pathname.split('/').filter(Boolean);
+        if (host.slice(-12) === '.github.io' && parts.length > 0) {
+          return '/' + parts[0] + '/';
+        }
+        return '/';
+      }
+      window.SITE_ROOT = getSiteRoot();
+    })();
+  </script>
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = (window.SITE_ROOT || '/') + 'assets/site.config.js';
+      document.head.appendChild(s);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=optional&subset=cyrillic,cyrillic-ext,latin,latin-ext">
+  <style>
+    html, body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: #F7F9FC;
+      color: #1E293B;
+      text-align: center;
+    }
+    a { color: #0D9488; font-weight: 600; }
+  </style>
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      var root = window.SITE_ROOT || '/';
+      document.querySelectorAll('link[rel="icon"]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (href && href.indexOf('://') === -1 && href.charAt(0) !== '/') {
+          link.href = root + href;
+        }
+      });
+    })();
+  </script>
+</head>
+<body>
+  <div>
+    <h1 style="font-size: 1.75rem; margin-bottom: 0.75rem;">404 — страница не найдена</h1>
+    <p style="margin-bottom: 1.25rem; color: #64748B;">Вернитесь на главную и оформите полис ОСАГО или КАСКО онлайн.</p>
+    <a id="home-link" href="/">На главную</a>
+  </div>
+  <script>
+    (function () {
+      var root = window.SITE_ROOT || '/';
+      var link = document.getElementById('home-link');
+      if (link) link.href = root;
+    })();
+  </script>
+</body>
+</html>

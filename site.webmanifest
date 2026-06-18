@@ -1,0 +1,24 @@
+{
+  "name": "Страхование ОСАГО / КАСКО",
+  "short_name": "ОСАГО КАСКО",
+  "description": "Оформление ОСАГО и КАСКО онлайн. Официальные полисы, проверка в базе НСИС.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F9FC",
+  "theme_color": "#1E3A8A",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

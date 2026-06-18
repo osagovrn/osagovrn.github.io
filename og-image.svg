@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="ОСАГО и КАСКО онлайн — по всей России">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071428"/>
+      <stop offset="55%" stop-color="#0E4D8C"/>
+      <stop offset="100%" stop-color="#0E7490"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="180" fill="#22D3EE" opacity="0.12"/>
+  <circle cx="180" cy="520" r="220" fill="#2B6CB0" opacity="0.18"/>
+  <text x="80" y="180" fill="#A5F3FC" font-family="Arial, sans-serif" font-size="28" font-weight="600">Дистанционно по всей России</text>
+  <text x="80" y="260" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="700">ОСАГО и КАСКО онлайн</text>
+  <text x="80" y="340" fill="#E8EEF4" font-family="Arial, sans-serif" font-size="34">Оформление полиса за 60 минут без визита в офис</text>
+  <text x="80" y="420" fill="#A5F3FC" font-family="Arial, sans-serif" font-size="28">Любой город РФ • База НСИС • 15+ страховых компаний</text>
+  <rect x="80" y="480" width="360" height="72" rx="16" fill="#0891B2"/>
+  <text x="260" y="528" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="700" text-anchor="middle">8 (950) 767-85-75</text>
+</svg>
