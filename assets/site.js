@@ -133,7 +133,28 @@
   }
 
   function initOrderIframeLazyLoad() {
-    // Виджет подключён по официальной схеме Pampadu: src и ppdw.js в index.html.
+    var iframe = document.getElementById('ppdwi');
+    if (!iframe || iframe.getAttribute('src') || !iframe.getAttribute('data-src')) return;
+
+    function activate() {
+      loadOrderIframe();
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            activate();
+            observer.disconnect();
+            return;
+          }
+        }
+      }, { rootMargin: '400px 0px', threshold: 0 });
+      observer.observe(iframe);
+      return;
+    }
+
+    activate();
   }
 
   function initEngagementTracking() {
@@ -171,36 +192,7 @@
   }
 
   function initOrderWidgetPreload() {
-    var trigger = document.getElementById('services') || document.getElementById('check');
-    if (!trigger) return;
-
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function (entries) {
-        for (var i = 0; i < entries.length; i++) {
-          if (entries[i].isIntersecting) {
-            preloadOrderWidgetScript();
-            observer.disconnect();
-            return;
-          }
-        }
-      }, { rootMargin: '320px 0px', threshold: 0 });
-      observer.observe(trigger);
-      return;
-    }
-
-    var done = false;
-    function check() {
-      if (done) return;
-      var rect = trigger.getBoundingClientRect();
-      var viewHeight = window.innerHeight || document.documentElement.clientHeight;
-      if (rect.top < viewHeight + 320) {
-        done = true;
-        preloadOrderWidgetScript();
-        window.removeEventListener('scroll', check);
-      }
-    }
-    window.addEventListener('scroll', check, { passive: true });
-    check();
+    // ppdw.js подключается вместе с iframe (initOrderIframeLazyLoad / scrollToOrderTarget).
   }
 
   function initMobileStickyCta() {
