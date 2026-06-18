@@ -4,7 +4,7 @@ import path from 'path';
 import sharp from 'sharp';
 import pngToIco from 'png-to-ico';
 
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const root = path.resolve(path.dirname(path.dirname(fileURLToPath(import.meta.url))), '..');
 const svgPath = path.join(root, 'favicon.svg');
 const icoPath = path.join(root, 'favicon.ico');
 const sizes = [16, 32, 48];

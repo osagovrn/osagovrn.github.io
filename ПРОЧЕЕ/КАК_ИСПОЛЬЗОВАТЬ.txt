@@ -1,0 +1,31 @@
+Папка ПРОЧЕЕ — всё для разработки и тестов. На сайт НЕ выгружать.
+
+ЧТО ВЫГРУЖАТЬ НА GITHUB (только из корня osago):
+  index.html, 404.html, privacy.html
+  папка assets/
+  favicon.ico, favicon.svg
+  og-image.png, og-image.svg
+  robots.txt, sitemap.xml, sitemap.txt, llms.txt, site.webmanifest
+  .nojekyll
+  google*.html, yandex*.html
+  _headers, _redirects (если используете Netlify/Cloudflare)
+
+НЕ ВЫГРУЖАТЬ:
+  эту папку ПРОЧЕЕ (node_modules, скрипты, скриншоты)
+  папку .git
+
+Сборка CSS (если меняли классы в HTML):
+  cd ПРОЧЕЕ
+  npm install
+  npm run build:css
+
+Тесты сайта (локальный сервер на порту 3001):
+  npx serve -l 3001 .. 
+  cd ПРОЧЕЕ
+  npm run test:all
+
+Деплой через git (рекомендуется):
+  cd ..
+  git push -u origin main
+
+GitHub Actions сам соберёт CSS и опубликует сайт без папки ПРОЧЕЕ.

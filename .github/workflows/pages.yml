@@ -23,12 +23,22 @@ jobs:
         with:
           node-version: '20'
           cache: npm
-      - run: npm install --no-audit --no-fund
-      - run: npm run build:css
+          cache-dependency-path: ПРОЧЕЕ/package-lock.json
+      - run: npm install --no-audit --no-fund --prefix ПРОЧЕЕ
+      - run: npm run build:css --prefix ПРОЧЕЕ
         continue-on-error: true
+      - name: Prepare site bundle
+        run: |
+          mkdir _site
+          shopt -s dotglob nullglob
+          for item in *; do
+            [ "$item" = "_site" ] && continue
+            [ "$item" = "ПРОЧЕЕ" ] && continue
+            cp -r "$item" _site/
+          done
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     needs: build

@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const BASE = process.argv[2] || 'http://127.0.0.1:3001';
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const root = path.resolve(path.dirname(path.dirname(fileURLToPath(import.meta.url))), '..');
 const issues = [];
 
 function add(cat, detail) {

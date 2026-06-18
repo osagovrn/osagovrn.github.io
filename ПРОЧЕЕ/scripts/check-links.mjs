@@ -3,7 +3,7 @@ import path from 'path';
 import http from 'http';
 import { fileURLToPath } from 'url';
 
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const root = path.resolve(path.dirname(path.dirname(fileURLToPath(import.meta.url))), '..');
 const htmlFiles = ['index.html', 'privacy.html', '404.html'];
 const issues = [];
 
