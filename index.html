@@ -361,12 +361,70 @@
     })();
   </script>
   <link rel="preload" href="og-image.png" as="image" type="image/png">
-  <link rel="preload" href="assets/tailwind.css" as="style">
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
   <link rel="dns-prefetch" href="https://b2c.pampadu.ru">
   <link rel="dns-prefetch" href="https://mc.yandex.ru">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <link rel="preconnect" href="https://b2c.pampadu.ru" crossorigin>
-  <link rel="stylesheet" href="assets/tailwind.css">
+  <link rel="stylesheet" href="assets/tailwind.css" id="tailwind-local">
+  <script>
+    (function () {
+      var tailwindConfig = {
+        theme: {
+          extend: {
+            screens: { xs: '375px' },
+            colors: {
+              brand: {
+                50: '#EFF6FF', 100: '#DBEAFE', 200: '#BFDBFE', 500: '#3B82F6',
+                600: '#2563EB', 700: '#1D4ED8', 800: '#1E40AF', 900: '#1E3A8A',
+              },
+              cta: { 50: '#F0FDFA', 100: '#CCFBF1', 500: '#0D9488', 600: '#0F766E', 700: '#115E59' },
+              accent: { 200: '#BFDBFE', 300: '#93C5FD', 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8' },
+              heading: '#1E293B',
+              surface: { page: '#F7F9FC', muted: '#F1F5F9', card: '#FFFFFF' },
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            },
+            boxShadow: {
+              soft: '0 2px 16px -2px rgba(30, 58, 95, 0.07)',
+              card: '0 8px 28px -6px rgba(30, 58, 95, 0.10)',
+              glow: '0 12px 40px -8px rgba(30, 58, 138, 0.18)',
+            },
+          },
+        },
+      };
+
+      function loadTailwindCdn() {
+        if (document.getElementById('tailwind-cdn')) return;
+        var local = document.getElementById('tailwind-local');
+        if (local) local.remove();
+        var s = document.createElement('script');
+        s.id = 'tailwind-cdn';
+        s.src = 'https://cdn.tailwindcss.com?plugins=forms';
+        s.onload = function () { window.tailwind.config = tailwindConfig; };
+        document.head.appendChild(s);
+      }
+
+      var localLink = document.getElementById('tailwind-local');
+      if (!localLink) {
+        loadTailwindCdn();
+        return;
+      }
+
+      localLink.addEventListener('error', loadTailwindCdn);
+
+      window.addEventListener('load', function () {
+        try {
+          var sheet = localLink.sheet;
+          if (!sheet || sheet.cssRules.length === 0) loadTailwindCdn();
+        } catch (e) {
+          loadTailwindCdn();
+        }
+      });
+    })();
+  </script>
   <style id="font-lock">
     html, body {
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
