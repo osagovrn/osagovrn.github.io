@@ -360,42 +360,13 @@
       }
     })();
   </script>
-  <link rel="preload" href="og-image.svg" as="image" type="image/svg+xml">
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+  <link rel="preload" href="og-image.png" as="image" type="image/png">
+  <link rel="preload" href="assets/tailwind.css" as="style">
   <link rel="dns-prefetch" href="https://b2c.pampadu.ru">
   <link rel="dns-prefetch" href="https://mc.yandex.ru">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <!-- Для продакшена: npm run build:css → подключите assets/tailwind.css вместо CDN ниже -->
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <link rel="preconnect" href="https://b2c.pampadu.ru" crossorigin>
-  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          screens: { xs: '375px' },
-          colors: {
-            brand: {
-              50: '#EFF6FF', 100: '#DBEAFE', 200: '#BFDBFE', 500: '#3B82F6',
-              600: '#2563EB', 700: '#1D4ED8', 800: '#1E40AF', 900: '#1E3A8A',
-            },
-            cta: { 50: '#F0FDFA', 100: '#CCFBF1', 500: '#0D9488', 600: '#0F766E', 700: '#115E59' },
-            accent: { 200: '#BFDBFE', 300: '#93C5FD', 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8' },
-            heading: '#1E293B',
-            surface: { page: '#F7F9FC', muted: '#F1F5F9', card: '#FFFFFF' },
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-          },
-          boxShadow: {
-            soft: '0 2px 16px -2px rgba(30, 58, 95, 0.07)',
-            card: '0 8px 28px -6px rgba(30, 58, 95, 0.10)',
-            glow: '0 12px 40px -8px rgba(30, 58, 138, 0.18)',
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="stylesheet" href="assets/tailwind.css">
   <style id="font-lock">
     html, body {
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
@@ -1711,7 +1682,7 @@
 
       <div class="iframe-wrap rounded-xl sm:rounded-2xl md:rounded-3xl border border-slate-200 bg-slate-50 shadow-soft">
         <iframe
-          src="https://b2c.pampadu.ru/index.html#638fafc5-899c-489a-a22a-8fb7c91c4c7e"
+          src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
           id="ppdwi"
           scrolling="no"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -1725,13 +1696,23 @@
         <a href="tel:+79507678575" class="text-brand-600 hover:text-brand-700 underline underline-offset-2 font-medium">Позвоните</a>
         или
         <a
-          href="https://b2c.pampadu.ru/index.html#638fafc5-899c-489a-a22a-8fb7c91c4c7e"
+          href="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
           target="_blank"
           rel="noopener noreferrer"
           class="text-brand-600 hover:text-brand-700 underline underline-offset-2 font-medium"
           id="widget-direct-link"
         >откройте оформление в новом окне</a>
       </p>
+
+      <div class="mt-6 max-w-xl mx-auto rounded-xl sm:rounded-2xl border border-slate-200 bg-surface-page p-4 sm:p-5 text-center shadow-soft">
+        <p class="text-sm text-muted leading-relaxed mb-3">
+          Разместите ссылку на расчёт в соцсетях, мессенджерах или отправьте клиенту:
+        </p>
+        <p class="text-xs sm:text-sm text-brand-700 break-all font-medium mb-4 px-1" id="widget-share-url" aria-live="polite"></p>
+        <button type="button" id="widget-share-copy" class="btn-outline text-sm !w-full sm:!w-auto">
+          Скопировать ссылку
+        </button>
+      </div>
 
       <aside id="partner-legal" class="mt-6 sm:mt-8 rounded-xl sm:rounded-2xl border border-slate-200 bg-surface-page p-5 sm:p-6 shadow-soft" aria-labelledby="partner-legal-title">
         <h3 id="partner-legal-title" class="font-bold text-heading text-base sm:text-lg mb-2">Оператор онлайн-оформления</h3>
