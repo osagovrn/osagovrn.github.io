@@ -46,12 +46,16 @@
       (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight
     );
     var targetTop = Math.min(Math.max(0, absoluteTop - offset), maxScroll);
+    var availableHeight = window.innerHeight - offset - bottomInset;
 
-    if (bottomInset > 0) {
+    if (bottomInset > 0 && rect.height <= availableHeight) {
       var visibleBottom = targetTop + window.innerHeight - bottomInset;
       var elementBottom = absoluteTop + rect.height;
       if (elementBottom > visibleBottom) {
-        targetTop = Math.min(maxScroll, Math.max(0, elementBottom - window.innerHeight + bottomInset + 8));
+        targetTop = Math.min(
+          maxScroll,
+          Math.max(targetTop, elementBottom - window.innerHeight + bottomInset + 8)
+        );
       }
     }
 
@@ -593,6 +597,66 @@
         trackGoal('click_widget_direct');
       });
     }
+
+    var shareUrl = document.getElementById('widget-share-url');
+    if (shareUrl) shareUrl.textContent = url;
+
+    var copyBtn = document.getElementById('widget-share-copy');
+    if (!copyBtn) return;
+
+    copyBtn.addEventListener('click', function () {
+      function onCopied() {
+        trackGoal('copy_widget_link');
+        copyBtn.textContent = 'Скопировано';
+        window.setTimeout(function () {
+          copyBtn.textContent = 'Скопировать ссылку';
+        }, 2000);
+      }
+
+      function legacyCopy() {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try {
+          ok = document.execCommand('copy');
+        } catch (e) {}
+        document.body.removeChild(ta);
+        if (ok) onCopied();
+        else window.prompt('Скопируйте ссылку на расчёт:', url);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(onCopied).catch(legacyCopy);
+      } else {
+        legacyCopy();
+      }
+    });
+  }
+
+  function initFaqToggle() {
+    var more = document.getElementById('faq-more');
+    var btn = document.getElementById('faq-toggle');
+    if (!more || !btn) return;
+
+    btn.addEventListener('click', function () {
+      var isHidden = more.hasAttribute('hidden');
+      if (isHidden) {
+        more.removeAttribute('hidden');
+        more.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.textContent = 'Скрыть дополнительные вопросы';
+      } else {
+        more.setAttribute('hidden', '');
+        more.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'Показать ещё вопросы';
+      }
+    });
   }
 
   initAnalytics();
@@ -608,5 +672,6 @@
     initMobileStickyCta();
     initDeferredOrderScroll();
     initWidgetDirectLink();
+    initFaqToggle();
   });
 })();

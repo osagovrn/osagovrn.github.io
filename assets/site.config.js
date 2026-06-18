@@ -33,7 +33,7 @@ window.SITE = {
     actualAddress: '123112, г. Москва, Пресненская наб., д. 6, стр. 2',
     website: 'https://pampadu.ru/',
     b2cWebsite: 'https://b2c.pampadu.ru/',
-    widgetUrl: 'https://b2c.pampadu.ru/index.html#638fafc5-899c-489a-a22a-8fb7c91c4c7e',
+    widgetUrl: 'https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c',
     requisitesUrl: 'https://help.pampadu.ru/article/2814',
     contactsUrl: 'https://pampadu.ru/contacts/'
   }
