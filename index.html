@@ -27,15 +27,15 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow">
   <meta name="yandex" content="index, follow">
-  <meta name="yandex-verification" content="ea57d1fd75c2d5d0">
+  <meta name="yandex-verification" content="1af17763f142092c">
   <meta name="theme-color" content="#1E3A8A">
   <meta name="format-detection" content="telephone=yes">
 
-  <link rel="canonical" href="">
-  <link rel="alternate" hreflang="ru" href="">
-  <link rel="alternate" hreflang="x-default" href="">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
-  <link rel="alternate" type="text/plain" href="llms.txt" title="Описание сайта для AI">
+  <link rel="canonical" href="https://yvwvy.ru/">
+  <link rel="alternate" hreflang="ru" href="https://yvwvy.ru/">
+  <link rel="alternate" hreflang="x-default" href="https://yvwvy.ru/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://yvwvy.ru/sitemap.xml">
+  <link rel="alternate" type="text/plain" href="https://yvwvy.ru/llms.txt" title="Описание сайта для AI">
 
   <!-- Укажите ID в SITE.analytics и коды в SITE.verify перед запуском рекламы -->
 
@@ -44,8 +44,8 @@
   <meta property="og:site_name" content="Страхование ОСАГО / КАСКО">
   <meta property="og:title" content="ОСАГО и КАСКО онлайн — по всей России">
   <meta property="og:description" content="Дистанционное оформление полиса за 60 минут без визита в офис. Официальные полисы, проверка в базе НСИС, 15+ страховых компаний.">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+  <meta property="og:url" content="https://yvwvy.ru/">
+  <meta property="og:image" content="https://yvwvy.ru/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ОСАГО и КАСКО онлайн — дистанционно по всей России">
@@ -53,7 +53,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ОСАГО и КАСКО онлайн — по всей России">
   <meta name="twitter:description" content="Оформление страховки автомобиля дистанционно в любом городе. Официальные полисы, лучшие тарифы, проверка НСИС.">
-  <meta name="twitter:image" content="">
+  <meta name="twitter:image" content="https://yvwvy.ru/og-image.png">
   <meta name="twitter:image:alt" content="ОСАГО и КАСКО — дистанционно по России">
 
   <meta name="geo.region" content="RU">
@@ -301,11 +301,18 @@
 
       var runtimeUrl = location.href.split('#')[0].split('?')[0];
       if (!isLocalHost()) runtimeUrl = toHttps(runtimeUrl);
-      var url = toHttps(siteUrl) || runtimeUrl;
 
-      document.querySelectorAll('link[rel="canonical"], link[rel="alternate"], meta[property="og:url"]').forEach(function (el) {
-        if (el.tagName === 'META') el.content = url;
-        else el.href = url;
+      function isHomePage() {
+        var file = (location.pathname || '/').split('/').pop() || '';
+        return file === '' || /^index\.html$/i.test(file);
+      }
+
+      var homeUrl = toHttps(siteUrl) || runtimeUrl;
+      var pageUrl = (isHomePage() && siteUrl) ? toHttps(siteUrl) : runtimeUrl;
+
+      document.querySelectorAll('link[rel="canonical"], link[rel="alternate"][hreflang], meta[property="og:url"]').forEach(function (el) {
+        if (el.tagName === 'META') el.content = pageUrl;
+        else el.href = pageUrl;
       });
       var ogImage = document.querySelector('meta[property="og:image"]');
       var twImage = document.querySelector('meta[name="twitter:image"]');
@@ -320,13 +327,13 @@
       if (sitemapLink) sitemapLink.href = baseOrigin + 'sitemap.xml';
 
       var verify = cfg.verify || {};
-      if (verify.yandex) {
+      if (verify.yandex && !document.querySelector('meta[name="yandex-verification"]')) {
         var ymMeta = document.createElement('meta');
         ymMeta.name = 'yandex-verification';
         ymMeta.content = verify.yandex;
         document.head.appendChild(ymMeta);
       }
-      if (verify.google) {
+      if (verify.google && !document.querySelector('meta[name="google-site-verification"]')) {
         var gMeta = document.createElement('meta');
         gMeta.name = 'google-site-verification';
         gMeta.content = verify.google;
@@ -339,7 +346,7 @@
           var data = JSON.parse(ld.textContent);
           data['@graph'].forEach(function (node) {
             if (node['@type'] === 'WebSite' || node['@type'] === 'LocalBusiness') {
-              node.url = url;
+              node.url = homeUrl;
             }
             if (node['@id'] === '#organization') {
               var legal = cfg.legal || {};
@@ -959,8 +966,31 @@
     }
 
     .desktop-nav {
+      flex: 1 1 auto;
       flex-wrap: nowrap;
       min-width: 0;
+      justify-content: flex-end;
+    }
+
+    .btn-header--call {
+      flex-shrink: 0;
+      margin-left: 0.375rem;
+    }
+
+    .btn-header--call .btn-header__label {
+      display: none;
+    }
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .btn-header--call .btn-header__label--short {
+        display: inline;
+      }
+    }
+
+    @media (min-width: 1536px) {
+      .btn-header--call .btn-header__label--full {
+        display: inline;
+      }
     }
 
     @media (min-width: 1024px) {
@@ -1275,7 +1305,7 @@
 
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-soft safe-top">
-    <div class="max-w-6xl mx-auto header-inner px-3 xs:px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto header-inner px-3 xs:px-4 sm:px-6 lg:px-8">
       <div class="header-row h-14 sm:h-16">
         <a href="#" data-scroll-top class="header-brand-link flex items-center gap-2 sm:gap-3 group" aria-label="На начало страницы">
           <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-700 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 header-logo-icon">
@@ -1290,27 +1320,22 @@
         </a>
 
         <div class="header-actions flex items-center gap-2 sm:gap-3">
-          <nav class="desktop-nav hidden lg:flex items-center gap-0.5 xl:gap-1 mr-1">
+          <nav class="desktop-nav hidden lg:flex items-center gap-0.5 xl:gap-1">
             <a href="#services" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Услуги</a>
-            <a href="#benefits" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Преимущества</a>
+            <a href="#benefits" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap"><span class="xl:hidden">Плюсы</span><span class="hidden xl:inline">Преимущества</span></a>
             <a href="#check" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Проверка</a>
             <a href="#documents" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Документы</a>
-            <a href="#how-it-works" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Как это работает</a>
+            <a href="#how-it-works" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap"><span class="2xl:hidden">Как работает</span><span class="hidden 2xl:inline">Как это работает</span></a>
             <a href="#oformit-polisa" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Оформить</a>
             <a href="#faq" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">FAQ</a>
             <a href="#cta" class="px-2 xl:px-3 py-2 text-sm font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Контакты</a>
           </nav>
-          <a href="tel:+79507678575" class="btn-header hidden xs:inline-flex">
+          <a href="tel:+79507678575" class="btn-header btn-header--call" aria-label="Позвонить 8 950 767-85-75">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
-            <span class="hidden sm:inline">Позвонить</span>
-            <span class="sm:hidden">Звонок</span>
-          </a>
-          <a href="tel:+79507678575" class="btn-header xs:hidden" aria-label="Позвонить">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
+            <span class="btn-header__label btn-header__label--short">Звонок</span>
+            <span class="btn-header__label btn-header__label--full">Позвонить</span>
           </a>
           <button type="button" id="menu-toggle" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-brand-700 hover:bg-brand-50 transition-colors" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
             <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1419,7 +1444,7 @@
             Оформляем полисы для водителей из любого города и региона: расчёт стоимости, подбор страховой, электронный полис и проверка в базе НСИС. Всё онлайн — вам не нужно приезжать в офис.
           </p>
           <div class="flex flex-wrap gap-2 mt-4">
-            <span class="inline-flex px-3 py-1 rounded-full bg-white border border-brand-100 text-xs sm:text-sm text-brand-800">Воронеж</span>
+            <a href="voronezh.html" class="inline-flex px-3 py-1 rounded-full bg-white border border-brand-100 text-xs sm:text-sm text-brand-800 hover:bg-brand-50 hover:text-brand-700 transition-colors">Воронеж</a>
             <span class="inline-flex px-3 py-1 rounded-full bg-white border border-brand-100 text-xs sm:text-sm text-brand-800">Москва</span>
             <span class="inline-flex px-3 py-1 rounded-full bg-white border border-brand-100 text-xs sm:text-sm text-brand-800">Санкт-Петербург</span>
             <span class="inline-flex px-3 py-1 rounded-full bg-white border border-brand-100 text-xs sm:text-sm text-brand-800">и другие города РФ</span>
@@ -1527,6 +1552,27 @@
       </div>
     </div>
   </section>
+
+  <!-- Кросс-реклама: аренда мотошлемов -->
+  <aside class="py-10 sm:py-12 bg-gradient-to-br from-brand-900 to-brand-800 border-y border-brand-700" aria-label="Реклама аренды мотошлемов">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="min-w-0">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent-300 mb-2">Также от нас</p>
+          <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Аренда мотошлемов в Воронеже</h2>
+          <p class="text-brand-100/90 text-sm sm:text-base max-w-xl leading-relaxed">
+            JIEKAI JK902, размеры M и L — от 500&nbsp;₽/сутки. Расчёт на сайте, бронь по телефону или в Telegram.
+          </p>
+        </div>
+        <a
+          href="https://yvwvy.ru/motorent36/"
+          class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-cta-500 px-5 py-3 text-sm font-bold text-white hover:bg-cta-400 transition-colors text-center"
+        >
+          Аренда шлемов →
+        </a>
+      </div>
+    </div>
+  </aside>
 
   <!-- Benefits -->
   <section id="benefits" class="py-12 sm:py-16 md:py-24 bg-surface-page">
@@ -2077,6 +2123,10 @@
           <a href="#how-it-works" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Как это работает</a>
           <span class="text-brand-400 mx-2">·</span>
           <a href="#faq" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Вопросы и ответы</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="voronezh.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">ОСАГО в Воронеже</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="https://yvwvy.ru/motorent36/" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Аренда шлемов</a>
           <span class="text-brand-400 mx-2">·</span>
           <a href="#partner-legal" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Платформа оформления</a>
           <span class="text-brand-400 mx-2">·</span>
