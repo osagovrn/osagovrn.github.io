@@ -1,6 +1,9 @@
 (function () {
   'use strict';
 
+  var programmaticScrollUntil = 0;
+  var scrollToken = 0;
+
   function getEnv() {
     return window.SITE_ENV || {};
   }
@@ -15,6 +18,14 @@
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
   }
 
+  function isProgrammaticScroll() {
+    return Date.now() < programmaticScrollUntil;
+  }
+
+  function beginProgrammaticScroll(ms) {
+    programmaticScrollUntil = Date.now() + (typeof ms === 'number' ? ms : 900);
+  }
+
   function getScrollOffset() {
     var header = document.querySelector('header');
     var base = header ? Math.ceil(header.getBoundingClientRect().height) : 72;
@@ -22,10 +33,10 @@
   }
 
   function getScrollBottomInset() {
+    if (isProgrammaticScroll()) return 0;
     var bar = document.getElementById('mobile-sticky-cta');
     if (!bar || bar.hidden) return 0;
     if (window.matchMedia('(min-width: 768px)').matches) return 0;
-    if (window.scrollY < 240) return 0;
     return Math.ceil(bar.getBoundingClientRect().height) + 8;
   }
 
@@ -74,6 +85,35 @@
     }
   }
 
+  /** Повторные проходы — ловят сдвиг от sticky CTA, шрифтов и iframe */
+  function scrollToElementReliable(el, options) {
+    options = options || {};
+    if (!el) return;
+    scrollToken += 1;
+    var token = scrollToken;
+    var preferInstant = !!options.instant;
+
+    beginProgrammaticScroll(1000);
+
+    function pass(instant) {
+      if (token !== scrollToken) return;
+      scrollToElement(el, { instant: instant });
+    }
+
+    window.requestAnimationFrame(function () {
+      pass(preferInstant);
+      window.setTimeout(function () { pass(true); }, 80);
+      window.setTimeout(function () { pass(true); }, 220);
+      window.setTimeout(function () { pass(true); }, 500);
+      window.setTimeout(function () {
+        if (token !== scrollToken) return;
+        pass(true);
+        beginProgrammaticScroll(0);
+        window.dispatchEvent(new Event('scroll'));
+      }, 850);
+    });
+  }
+
   function scrollToHash(hash, options) {
     if (!hash || hash === '#') return false;
     var id = decodeURIComponent(String(hash).replace(/^#/, ''));
@@ -88,16 +128,13 @@
     if (!el) return false;
 
     var heading = el.querySelector('h1, h2, h3');
-    if (heading && el.contains(heading)) {
-      scrollToElement(heading, options);
-      return true;
-    }
-
-    scrollToElement(el, options);
+    var target = heading && el.contains(heading) ? heading : el;
+    scrollToElementReliable(target, options);
     return true;
   }
 
   function scrollWindowTop(instant) {
+    beginProgrammaticScroll(600);
     var env = getEnv();
     var useSmooth = !instant &&
       env.supportsSmoothScroll !== false &&
@@ -115,32 +152,79 @@
 
   function scrollToOrderTarget(options) {
     options = options || {};
-    var target = document.getElementById('oformit-polisa-target');
+    var target = document.getElementById('oformit-polisa-target') ||
+      document.getElementById('oformit-polisa');
     if (!target) return;
 
+    window.__osagoScrollOrderPending = true;
+    scrollToken += 1;
+    var token = scrollToken;
+
+    beginProgrammaticScroll(1400);
+
     if (options.loadIframe !== false) {
-      window.__osagoScrollOrderPending = true;
       loadOrderIframe();
     }
 
-    scrollToElement(target, { instant: options.instant });
+    function correct(instant) {
+      if (token !== scrollToken) return;
+      var el = document.getElementById('oformit-polisa-target') ||
+        document.getElementById('oformit-polisa');
+      if (el) scrollToElement(el, { instant: instant });
+    }
+
+    // Первый заход: сразу точный скролл (без smooth), потом добивки после layout
+    window.requestAnimationFrame(function () {
+      correct(true);
+      window.setTimeout(function () { correct(true); }, 60);
+      window.setTimeout(function () { correct(true); }, 180);
+      window.setTimeout(function () { correct(true); }, 400);
+      window.setTimeout(function () { correct(true); }, 700);
+      window.setTimeout(function () {
+        if (token !== scrollToken) return;
+        correct(true);
+        window.__osagoScrollOrderPending = false;
+        beginProgrammaticScroll(0);
+        window.dispatchEvent(new Event('scroll'));
+      }, 1100);
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () {
+        if (token !== scrollToken) return;
+        correct(true);
+      }).catch(function () {});
+    }
   }
 
   function loadOrderIframe() {
     var iframe = document.getElementById('ppdwi');
-    if (!iframe || iframe.getAttribute('src')) return;
-    var src = iframe.getAttribute('data-src');
-    if (!src) return;
-    iframe.setAttribute('src', src);
-    ensurePpdwScript();
-    iframe.addEventListener('load', function () {
+    if (!iframe) return;
+
+    function scheduleCorrect() {
       if (!window.__osagoScrollOrderPending) return;
-      window.__osagoScrollOrderPending = false;
-      window.setTimeout(function () {
-        var target = document.getElementById('oformit-polisa-target');
-        if (target) scrollToElement(target, { instant: true });
-      }, 100);
-    }, { once: true });
+      var delays = [80, 250, 500, 900];
+      delays.forEach(function (ms) {
+        window.setTimeout(function () {
+          if (!window.__osagoScrollOrderPending) return;
+          var target = document.getElementById('oformit-polisa-target') ||
+            document.getElementById('oformit-polisa');
+          if (target) scrollToElement(target, { instant: true });
+        }, ms);
+      });
+    }
+
+    if (!iframe.getAttribute('src')) {
+      var src = iframe.getAttribute('data-src');
+      if (!src) return;
+      iframe.setAttribute('src', src);
+      ensurePpdwScript();
+      iframe.addEventListener('load', scheduleCorrect, { once: true });
+      return;
+    }
+
+    // iframe уже грузится/загружен — всё равно корректируем позицию
+    scheduleCorrect();
   }
 
   function ensurePpdwScript() {
@@ -221,20 +305,24 @@
     var orderSection = document.getElementById('oformit-polisa');
     if (!bar) return;
 
-    var orderLink = bar.querySelector('.mobile-sticky-cta__order');
     var callLink = bar.querySelector('.mobile-sticky-cta__call');
     if (callLink) {
       callLink.addEventListener('click', function () {
         trackGoal('click_call_sticky');
       });
     }
-    /* #oformit-polisa in sticky bar is handled by initScrollLinks */
 
     var mq = window.matchMedia('(min-width: 768px)');
     var orderVisible = false;
 
     function setVisible(show) {
       if (mq.matches) {
+        bar.hidden = true;
+        document.body.classList.remove('has-mobile-cta');
+        return;
+      }
+      // Во время программного скролла не показываем sticky — иначе цель «уезжает»
+      if (isProgrammaticScroll()) {
         bar.hidden = true;
         document.body.classList.remove('has-mobile-cta');
         return;
@@ -315,15 +403,11 @@
 
         var runScroll = function () {
           var isOrder = id === 'oformit-polisa';
-          scrollToHash(href, { instant: !!fromMobileMenu });
+          // К форме — всегда точный скролл (первый визит / ленивый iframe)
+          scrollToHash(href, { instant: isOrder || !!fromMobileMenu });
           if (isOrder) trackGoal('click_order_form');
           if (history.replaceState) {
             history.replaceState(null, '', getPagePath() + href);
-          }
-          if (fromMobileMenu) {
-            window.setTimeout(function () {
-              scrollToHash(href, { instant: true });
-            }, 60);
           }
         };
 
@@ -375,6 +459,13 @@
 
     links.forEach(function (link) {
       link.addEventListener('click', function () { setMenuOpen(false); });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!menu.classList.contains('open')) return;
+      var target = e.target;
+      if (toggle.contains(target) || menu.contains(target)) return;
+      setMenuOpen(false);
     });
 
     document.addEventListener('keydown', function (e) {
