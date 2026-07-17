@@ -7,24 +7,30 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <script src="assets/env.js"></script>
-  <script src="assets/site.config.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext">
+
   <style>
     html, body {
       font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
-    h1, h2, h3, h4, .font-extrabold, .font-bold { font-family: 'Onest', system-ui, sans-serif; }
+    h1, h2, h3, h4, .hero-brand, .hero-title, .section-title, .site-brand__title, .site-brand__subtitle, .phone-large {
+      font-family: 'Onest', system-ui, sans-serif;
+    }
   </style>
 
-  <title>ОСАГО в Воронеже онлайн — оформить дистанционно за ≈ 60 минут</title>
-  <meta name="description" content="Оформить ОСАГО в Воронеже онлайн без визита в офис. Расчёт за 10 минут, электронный полис, проверка в базе НСИС. Помощь по телефону 8 (950) 767-85-75.">
+  <script src="assets/site.config.js"></script>
+
+    <title>ОСАГО в Воронеже онлайн — купить и оформить без офиса за ≈ 60 минут</title>
+  <meta name="description" content="Купить или продлить ОСАГО в Воронеже онлайн: расчёт за 10 минут, электронный полис, проверка НСИС, без визита в офис. Тел. 8 (950) 767-85-75.">
+  <meta name="author" content="Страхование ОСАГО / КАСКО">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="yandex" content="index, follow">
   <meta name="yandex-verification" content="1af17763f142092c">
-  <meta name="theme-color" content="#1E3A8A">
+  <meta name="theme-color" content="#0B2545">
+  <meta name="format-detection" content="telephone=yes">
   <meta name="geo.region" content="RU-VOR">
   <meta name="geo.placename" content="Воронеж">
 
@@ -41,15 +47,17 @@
   <meta property="og:image" content="https://yvwvy.ru/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ОСАГО в Воронеже онлайн">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ОСАГО в Воронеже онлайн">
-  <meta name="twitter:description" content="Оформить ОСАГО дистанционно в Воронеже. Расчёт за 10 минут, полис в базе НСИС.">
+  <meta name="twitter:description" content="Купить или продлить ОСАГО в Воронеже: расчёт, электронный полис, проверка НСИС. Без визита в офис.">
   <meta name="twitter:image" content="https://yvwvy.ru/og-image.png">
 
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
 
   <script type="application/ld+json">
   {
@@ -60,10 +68,10 @@
         "@id": "https://yvwvy.ru/voronezh.html#webpage",
         "url": "https://yvwvy.ru/voronezh.html",
         "name": "ОСАГО в Воронеже онлайн",
-        "description": "Оформление ОСАГО и КАСКО в Воронеже дистанционно. Официальные полисы, регистрация в базе НСИС.",
+        "description": "Купить или продлить ОСАГО в Воронеже онлайн: расчёт, электронный полис, проверка в базе НСИС.",
         "inLanguage": "ru-RU",
         "isPartOf": { "@id": "https://yvwvy.ru/#website" },
-        "about": { "@type": "Place", "name": "Воронеж" }
+        "about": { "@type": "City", "name": "Воронеж" }
       },
       {
         "@type": "BreadcrumbList",
@@ -85,11 +93,10 @@
       {
         "@type": "Service",
         "name": "ОСАГО в Воронеже",
-        "serviceType": "Обязательное страхование автогражданской ответственности",
+        "serviceType": "Оформление ОСАГО обязательного страхования автогражданской ответственности",
         "areaServed": {
           "@type": "City",
-          "name": "Воронеж",
-          "containedInPlace": { "@type": "Country", "name": "Россия" }
+          "name": "Воронеж"
         },
         "description": "Дистанционное оформление полиса ОСАГО для водителей из Воронежа и Воронежской области.",
         "provider": {
@@ -107,7 +114,7 @@
             "name": "Можно ли оформить ОСАГО в Воронеже онлайн?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Да. Оформление полностью дистанционное: расчёт, выбор страховой, оплата и получение электронного полиса на e-mail. В офис ехать не нужно."
+              "text": "Да. Оформление полностью дистанционное: расчёт, выбор страховой, оплата и электронный полис на e-mail. В офис ехать не нужно."
             }
           },
           {
@@ -115,7 +122,7 @@
             "name": "Сколько стоит ОСАГО в Воронеже?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Цена зависит от мощности автомобиля, КБМ, стажа водителей и выбранной страховой. Рассчитайте точный тариф в калькуляторе на этой странице за 10 минут."
+              "text": "Цена зависит от мощности автомобиля, КБМ, стажа водителей и выбранной страховой. Точный тариф — в калькуляторе выше за 10 минут."
             }
           },
           {
@@ -132,7 +139,7 @@
   }
   </script>
 
-  <script>
+<script>
     (function () {
       var cfg = window.SITE || {};
       var env = window.SITE_ENV || {};
@@ -177,347 +184,441 @@
     })();
   </script>
 
-  <link rel="dns-prefetch" href="https://b2c.pampadu.ru">
+<link rel="dns-prefetch" href="https://b2c.pampadu.ru">
   <link rel="dns-prefetch" href="https://mc.yandex.ru">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://b2c.pampadu.ru" crossorigin>
-  <link rel="stylesheet" href="assets/tailwind.css">
+  <link rel="stylesheet" href="assets/tailwind.css" id="tailwind-local">
+  <script>
+    (function () {
+      var tailwindConfig = {
+        theme: {
+          extend: {
+            screens: { xs: '375px' },
+            colors: {
+              brand: {
+                50: '#EFF6FF', 100: '#DBEAFE', 200: '#BFDBFE', 500: '#3B82F6',
+                600: '#2563EB', 700: '#1D4ED8', 800: '#1E40AF', 900: '#1E3A8A',
+              },
+              cta: { 50: '#F0FDFA', 100: '#CCFBF1', 500: '#0D9488', 600: '#0F766E', 700: '#115E59' },
+              accent: { 200: '#BFDBFE', 300: '#93C5FD', 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8' },
+              heading: '#1E293B',
+              surface: { page: '#F7F9FC', muted: '#F1F5F9', card: '#FFFFFF' },
+            },
+            fontFamily: {
+              sans: ['Source Sans 3', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+              display: ['Onest', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              soft: '0 1px 2px rgba(11, 37, 69, 0.06)',
+              card: '0 1px 3px rgba(11, 37, 69, 0.08)',
+            },
+          },
+        },
+      };
 
-  <style>
-    :root {
-      --color-brand-dark: #0B2545;
-      --color-cta: #0F7A6B;
-      --color-cta-hover: #0B5F54;
-      --color-brand-50: #E8F1F6;
-      --color-brand-100: #D0E3EE;
-      --font-display: 'Onest', system-ui, sans-serif;
-      --btn-h: clamp(2.5rem, 1.2vw + 2.1rem, 3rem);
-      --btn-px: clamp(0.9rem, 1.2vw + 0.55rem, 1.45rem);
-      --btn-py: clamp(0.55rem, 0.4vw + 0.4rem, 0.8rem);
-      --btn-fs: clamp(0.8125rem, 0.25vw + 0.75rem, 0.9375rem);
-      --btn-gap: clamp(0.35rem, 0.2vw + 0.3rem, 0.5rem);
-      --radius-btn: clamp(0.55rem, 0.4vw + 0.4rem, 0.75rem);
+      function loadTailwindCdn() {
+        if (document.getElementById('tailwind-cdn')) return;
+        var local = document.getElementById('tailwind-local');
+        if (local) local.remove();
+        var s = document.createElement('script');
+        s.id = 'tailwind-cdn';
+        s.src = 'https://cdn.tailwindcss.com?plugins=forms';
+        s.onload = function () { window.tailwind.config = tailwindConfig; };
+        document.head.appendChild(s);
+      }
+
+      var localLink = document.getElementById('tailwind-local');
+      if (localLink) localLink.addEventListener('error', loadTailwindCdn);
+      else loadTailwindCdn();
+    })();
+  </script>
+  <style id="font-lock">
+    html, body {
+      font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
     }
-    body {
-      background:
-        radial-gradient(1000px 480px at 0% -10%, rgba(15, 122, 107, 0.06), transparent 55%),
-        #F0F4F7;
-      color: #3D4F5F;
-      line-height: 1.65;
-      min-width: 320px;
-      overflow-x: hidden;
-      font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      font-size: clamp(0.9375rem, 0.2vw + 0.9rem, 1.0625rem);
-      -webkit-font-smoothing: antialiased;
-    }
-    h1, h2, h3, .font-extrabold, .font-bold { font-family: var(--font-display); }
-    .btn-cta,
-    .btn-ghost {
-      box-sizing: border-box;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--btn-gap);
-      min-height: var(--btn-h);
-      padding: var(--btn-py) var(--btn-px);
-      border-radius: var(--radius-btn);
-      font-family: var(--font-display);
-      font-size: var(--btn-fs);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      white-space: nowrap;
-      max-width: 100%;
-      width: 100%;
-      touch-action: manipulation;
-      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    @media (min-width: 640px) {
-      .btn-cta, .btn-ghost { width: auto; }
-    }
-    .btn-cta {
-      color: #fff;
-      background: var(--color-cta);
-      border: 1.5px solid transparent;
-      box-shadow: 0 2px 10px -3px rgba(15, 122, 107, 0.28);
-    }
-    .btn-cta:hover { background: var(--color-cta-hover); transform: translateY(-1px); }
-    .btn-ghost {
-      color: var(--color-brand-dark);
-      background: #fff;
-      border: 1.5px solid var(--color-brand-100);
-    }
-    .btn-ghost:hover { background: var(--color-brand-50); border-color: #1A4D6E; transform: translateY(-1px); }
-    .iframe-wrap { width: 100%; overflow: auto; -webkit-overflow-scrolling: touch; }
-    .iframe-wrap iframe {
-      display: block; width: 100%; border: none; height: 75vh; min-height: 480px; max-height: 900px;
-    }
-    @media (min-width: 640px) {
-      .iframe-wrap iframe { height: 650px; min-height: 650px; }
-    }
-    @media (min-width: 1024px) {
-      .iframe-wrap iframe { height: 720px; min-height: 720px; }
-    }
-    #oformit-polisa, #faq, #cta { scroll-margin-top: 5rem; }
-    body.has-mobile-cta { padding-bottom: 4.75rem; }
-    .mobile-sticky-cta__call,
-    .mobile-sticky-cta__order {
-      min-height: clamp(2.5rem, 4vw + 1.6rem, 2.85rem);
-      font-size: clamp(0.8125rem, 0.4vw + 0.72rem, 0.9375rem);
-      border-radius: var(--radius-btn);
-      font-weight: 600;
-      font-family: var(--font-display);
-      touch-action: manipulation;
-    }
-    .btn-messenger {
-      box-sizing: border-box;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--btn-gap);
-      min-height: var(--btn-h);
-      padding: var(--btn-py) var(--btn-px);
-      border-radius: var(--radius-btn);
-      font-family: var(--font-display);
-      font-size: var(--btn-fs);
-      font-weight: 600;
-      line-height: 1.2;
-      text-decoration: none;
-      white-space: nowrap;
-      max-width: 100%;
-      width: 100%;
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1.5px solid rgba(255, 255, 255, 0.22);
-      touch-action: manipulation;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
-    }
-    .btn-messenger:hover { background: rgba(255, 255, 255, 0.16); }
-    @media (min-width: 640px) {
-      .btn-messenger { width: auto; }
+    h1, h2, h3, h4, .hero-brand, .hero-title, .section-title, .site-brand__title, .site-brand__subtitle, .phone-large {
+      font-family: 'Onest', system-ui, sans-serif !important;
     }
   </style>
-</head>
-<body class="antialiased">
-  <a href="#main-content" class="sr-only">Перейти к содержимому</a>
+  <link rel="stylesheet" href="assets/site-ui.css">
+  <style>
+    .page-crumbs {
+      margin: 0 0 1rem;
+      font-size: 0.875rem;
+      color: #5C6F7E;
+    }
+    .page-crumbs a {
+      color: #1A4D6E;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .page-crumbs a:hover { color: #0B2545; }
+    .page-crumbs span[aria-hidden] {
+      margin: 0 0.5rem;
+      color: #94A3B8;
+    }
+  </style>
 
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-soft">
-    <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-14 sm:h-16 gap-3">
-        <a href="./" class="flex items-center gap-2 sm:gap-3 group" aria-label="На главную">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-700 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+</head>
+
+<body class="antialiased">
+
+
+  <a href="#main-content" class="sr-only skip-link">Перейти к содержимому</a>
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-soft safe-top">
+    <div class="max-w-7xl mx-auto header-inner px-3 xs:px-4 sm:px-6 lg:px-8">
+      <div class="header-row">
+        <a href="./" class="header-brand-link flex items-center group" aria-label="На главную">
+          <div class="bg-brand-700 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 header-logo-icon">
+            <svg class="text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
           </div>
-          <div>
-            <span class="block font-bold text-brand-900 text-sm sm:text-base leading-tight">Страхование</span>
-            <span class="block font-medium text-brand-600 text-xs sm:text-sm leading-tight">ОСАГО / КАСКО</span>
+          <div class="site-brand">
+            <span class="site-brand__title block font-bold text-brand-900">Страхование</span>
+            <span class="site-brand__subtitle block font-medium text-brand-600">ОСАГО / КАСКО</span>
           </div>
         </a>
-        <div class="flex items-center gap-2 sm:gap-3">
-          <a href="./" class="hidden sm:inline-flex px-3 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg transition-colors">Вся Россия</a>
-          <a href="tel:+79507678575" class="btn-cta" style="width:auto;min-width:0;padding:var(--btn-py) var(--btn-px)">
-            Позвонить
+
+        <div class="header-actions flex items-center">
+          <nav class="desktop-nav hidden lg:flex items-center gap-0.5">
+            <a href="./" class="px-2 xl:px-3 py-1.5 font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Главная</a>
+            <a href="#how-it-works" class="px-2 xl:px-3 py-1.5 font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Как оформить</a>
+            <a href="#oformit-polisa" class="px-2 xl:px-3 py-1.5 font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Калькулятор</a>
+            <a href="prodlenie-osago.html" class="px-2 xl:px-3 py-1.5 font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Продлить</a>
+            <a href="#faq" class="px-2 xl:px-3 py-1.5 font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">FAQ</a>
+            <a href="#cta" class="px-2 xl:px-3 py-1.5 font-medium text-body hover:text-brand-700 rounded-lg hover:bg-brand-50 transition-colors whitespace-nowrap">Контакты</a>
+          </nav>
+          <a href="tel:+79507678575" class="btn-header btn-header--call" aria-label="Позвонить 8 950 767-85-75">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span class="btn-header__label btn-header__label--short">Звонок</span>
+            <span class="btn-header__label btn-header__label--full">Позвонить</span>
           </a>
+          <button type="button" id="menu-toggle" class="lg:hidden flex items-center justify-center rounded-lg text-brand-700 hover:bg-brand-50 transition-colors" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+            <svg id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="menu-icon-close" class="hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
       </div>
+
+      <nav id="mobile-menu" class="lg:hidden border-t border-slate-100" aria-label="Мобильное меню" aria-hidden="true">
+        <div class="py-3 flex flex-col gap-1">
+          <a href="./" class="mobile-nav-link px-3 py-3 text-sm font-medium text-heading hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors">Главная</a>
+          <a href="#how-it-works" class="mobile-nav-link px-3 py-3 text-sm font-medium text-heading hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors">Как оформить</a>
+          <a href="#oformit-polisa" class="mobile-nav-link px-3 py-3 text-sm font-medium text-heading hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors">Калькулятор</a>
+          <a href="prodlenie-osago.html" class="mobile-nav-link px-3 py-3 text-sm font-medium text-heading hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors">Продлить полис</a>
+          <a href="#faq" class="mobile-nav-link px-3 py-3 text-sm font-medium text-heading hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors">Вопросы и ответы</a>
+          <a href="#cta" class="mobile-nav-link px-3 py-3 text-sm font-medium text-heading hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors">Контакты</a>
+        </div>
+      </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="pt-24 sm:pt-28 pb-12 sm:pb-16 bg-gradient-to-br from-brand-50 via-white to-white" aria-label="ОСАГО в Воронеже">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="text-sm text-slate-500 mb-6" aria-label="Хлебные крошки">
-          <a href="./" class="text-brand-600 hover:text-brand-700 underline underline-offset-2">Главная</a>
-          <span class="mx-2 text-slate-400">/</span>
-          <span class="text-heading">Воронеж</span>
-        </nav>
+  <section class="hero-section relative overflow-hidden" aria-label="ОСАГО в Воронеже онлайн">
+    <div class="relative max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 hero-content">
+      <nav class="page-crumbs" aria-label="Хлебные крошки">
+        <a href="./">Главная</a>
+        <span aria-hidden="true">/</span>
+        <span>Воронеж</span>
+      </nav>
+      <p class="hero-brand">Воронеж и область · дистанционно</p>
+      <h1 class="hero-title">
+        ОСАГО в Воронеже онлайн — купить и оформить за&nbsp;≈&nbsp;60&nbsp;минут без визита в офис
+      </h1>
+      <p class="hero-subtitle">
+        Рассчитайте стоимость и оформите электронный полис ОСАГО или КАСКО для автомобиля, зарегистрированного в Воронеже или другом регионе. Договор заключается с лицензированной страховой компанией; полис проверяется в базе НСИС.
+      </p>
+      <div class="hero-actions flex flex-col sm:flex-row">
+        <a href="#oformit-polisa" class="btn-primary">
+          Рассчитать ОСАГО
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a href="prodlenie-osago.html" class="btn-outline">
+          Продлить полис
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <div class="max-w-3xl">
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100 text-brand-800 text-xs sm:text-sm font-semibold mb-5">
-            Воронеж и область · дистанционно
-          </span>
-          <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-900 mb-4 leading-snug tracking-tight">
-            ОСАГО в Воронеже онлайн — оформление за&nbsp;≈&nbsp;60&nbsp;минут без визита в офис
-          </h1>
-          <p class="text-base sm:text-lg text-slate-600 mb-8 max-w-2xl leading-relaxed">
-            Рассчитайте стоимость и оформите электронный полис ОСАГО или КАСКО для автомобиля, зарегистрированного в Воронеже или другом регионе.
-            Договор заключается с лицензированной страховой компанией; полис проверяется в базе НСИС.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <a href="#oformit-polisa" class="btn-cta">Рассчитать ОСАГО</a>
-            <a href="tel:+79507678575" class="btn-ghost">8 (950) 767-85-75</a>
-          </div>
+<section id="prices" class="proof-section" aria-labelledby="proof-title">
+    <div class="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+      <h2 id="proof-title" class="sr-only">Ориентиры по срокам и сервису</h2>
+      <div class="proof-stats grid grid-cols-2 sm:grid-cols-4">
+        <div class="proof-stat">
+          <div class="proof-stat__value">≈ 60 мин</div>
+          <div class="proof-stat__label">Оформление</div>
         </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-10 sm:mt-12 max-w-3xl">
-          <div class="rounded-xl bg-white border border-brand-100 p-4 text-center shadow-soft">
-            <div class="text-xl font-bold text-brand-800">≈ 60 мин</div>
-            <div class="text-xs text-slate-500 mt-1">Оформление</div>
-          </div>
-          <div class="rounded-xl bg-white border border-brand-100 p-4 text-center shadow-soft">
-            <div class="text-xl font-bold text-brand-800">15+</div>
-            <div class="text-xs text-slate-500 mt-1">Страховых</div>
-          </div>
-          <div class="rounded-xl bg-white border border-brand-100 p-4 text-center shadow-soft">
-            <div class="text-xl font-bold text-brand-800">НСИС</div>
-            <div class="text-xs text-slate-500 mt-1">База полисов</div>
-          </div>
-          <div class="rounded-xl bg-white border border-brand-100 p-4 text-center shadow-soft">
-            <div class="text-xl font-bold text-brand-800">24/7</div>
-            <div class="text-xs text-slate-500 mt-1">Онлайн</div>
-          </div>
+        <div class="proof-stat">
+          <div class="proof-stat__value">15+</div>
+          <div class="proof-stat__label">Страховых компаний</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat__value">НСИС</div>
+          <div class="proof-stat__label">Официальные полисы</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat__value">24/7</div>
+          <div class="proof-stat__label">Онлайн-сервис</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="py-10 sm:py-14 bg-white border-y border-brand-100" aria-labelledby="why-title">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="why-title" class="text-xl sm:text-2xl font-bold text-brand-900 mb-3">Почему так удобно для Воронежа</h2>
-        <p class="text-slate-600 mb-8 max-w-2xl">Работаем дистанционно по всей России, в том числе с водителями из Воронежа и области — без очередей и поездки в офис.</p>
-        <div class="grid sm:grid-cols-3 gap-4 sm:gap-6">
-          <div class="rounded-2xl border border-slate-200 bg-surface-page p-5 sm:p-6 shadow-soft">
-            <h3 class="font-bold text-heading mb-2">Без визита в офис</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">Заполните калькулятор дома или с телефона. Сканы документов обычно не нужны — данные вводятся с паспорта, СТС/ПТС и ВУ.</p>
-          </div>
-          <div class="rounded-2xl border border-slate-200 bg-surface-page p-5 sm:p-6 shadow-soft">
-            <h3 class="font-bold text-heading mb-2">Сравнение тарифов</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">Подбор среди 15+ страховых компаний. Итоговая цена зависит от региона регистрации авто, мощности и КБМ.</p>
-          </div>
-          <div class="rounded-2xl border border-slate-200 bg-surface-page p-5 sm:p-6 shadow-soft">
-            <h3 class="font-bold text-heading mb-2">Помощь, если застряли</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">Ошибка в форме или отказ страховой — позвоните или напишите в мессенджер, поможем доделать оформление.</p>
-          </div>
-        </div>
+    <section id="how-it-works" class="bg-surface-page" aria-labelledby="how-it-works-title">
+    <div class="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+      <div class="how-head text-center">
+        <span class="how-badge">Воронеж</span>
+        <h2 id="how-it-works-title" class="section-title font-bold text-heading px-2">Почему так удобно для Воронежа</h2>
+        <p class="how-lead text-muted mx-auto px-2">Работаем дистанционно по всей России, в том числе с водителями из Воронежа и области — без очередей и поездки в офис.</p>
       </div>
-    </section>
 
-    <section id="oformit-polisa" class="py-12 sm:py-16 bg-surface-page">
-      <div class="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div id="oformit-polisa-target" class="text-center mb-8 sm:mb-10">
-          <span class="inline-block px-4 py-1.5 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold mb-4">Онлайн-оформление</span>
-          <h2 class="text-xl sm:text-2xl font-bold text-brand-900 mb-3">Оформить ОСАГО в Воронеже самому</h2>
-          <p class="text-slate-500 text-base sm:text-lg max-w-2xl mx-auto">
-            Официальный виджет партнёрской платформы. Договор заключается со страховой компанией.
-          </p>
-        </div>
+      <ol class="how-steps grid md:grid-cols-3 max-w-5xl mx-auto list-none p-0 m-0">
+        <li class="how-step border border-brand-100 bg-white shadow-soft">
+          <div class="how-step-num bg-brand-700 text-white font-bold flex items-center justify-center">1</div>
+          <h3 class="font-bold text-heading">Без визита в офис</h3>
+          <p class="text-body">Расчёт, выбор страховой, оплата и электронный полис — полностью онлайн. Для водителей из Воронежа и области офис не нужен.</p>
+        </li>
+        <li class="how-step border border-brand-100 bg-white shadow-soft">
+          <div class="how-step-num bg-brand-700 text-white font-bold flex items-center justify-center">2</div>
+          <h3 class="font-bold text-heading">Сравнение тарифов</h3>
+          <p class="text-body">Сравните предложения 15+ страховых компаний. Итоговая цена зависит от мощности, КБМ, стажа и региона регистрации авто.</p>
+        </li>
+        <li class="how-step border border-brand-100 bg-white shadow-soft">
+          <div class="how-step-num bg-brand-700 text-white font-bold flex items-center justify-center">3</div>
+          <h3 class="font-bold text-heading">Помощь, если застряли</h3>
+          <p class="text-body">Если калькулятор не грузится или нужны подсказки по данным — позвоните или напишите, поможем оформить дистанционно.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-        <div class="iframe-wrap rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50 shadow-soft">
-          <iframe
-            data-src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
-            id="ppdwi"
-            loading="lazy"
-            scrolling="no"
-            referrerpolicy="strict-origin-when-cross-origin"
-            title="Оформление ОСАГО и КАСКО онлайн для Воронежа"
-          ></iframe>
-        </div>
-
-        <p class="mt-4 text-center text-sm text-slate-500 px-2">
-          Не загружается калькулятор?
-          <a href="tel:+79507678575" class="text-brand-600 hover:text-brand-700 underline underline-offset-2 font-medium">Позвоните</a>
-          или
-          <a
-            href="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-brand-600 hover:text-brand-700 underline underline-offset-2 font-medium"
-            id="widget-direct-link"
-          >откройте оформление в новом окне</a>
-        </p>
-
-        <aside class="mt-6 sm:mt-8 rounded-xl border border-slate-200 bg-white p-5 sm:p-6 shadow-soft" aria-labelledby="partner-legal-title">
-          <h3 id="partner-legal-title" class="font-bold text-heading text-base mb-2">Оператор онлайн-оформления</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Калькулятор работает через ООО «Страховые партнеры». Договор страхования заключается с выбранной страховой компанией.
-            ИНН 9729069737, ОГРН 1177746324623.
-          </p>
-        </aside>
-      </div>
-    </section>
-
-    <section id="faq" class="py-12 sm:py-16 bg-white" aria-labelledby="faq-title">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="faq-title" class="text-xl sm:text-2xl font-bold text-heading mb-6 text-center">Частые вопросы — Воронеж</h2>
-        <div class="space-y-4">
-          <details class="group bg-surface-page rounded-2xl border border-brand-100 shadow-soft overflow-hidden">
-            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-heading hover:bg-brand-50/50">
-              Можно ли оформить ОСАГО в Воронеже онлайн?
-            </summary>
-            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-brand-100 pt-4">
-              Да. Оформление полностью дистанционное: расчёт, выбор страховой, оплата и электронный полис на e-mail. В офис ехать не нужно.
-            </div>
-          </details>
-          <details class="group bg-surface-page rounded-2xl border border-brand-100 shadow-soft overflow-hidden">
-            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-heading hover:bg-brand-50/50">
-              Сколько стоит ОСАГО в Воронеже?
-            </summary>
-            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-brand-100 pt-4">
-              Цена зависит от мощности автомобиля, КБМ, стажа водителей и выбранной страховой. Точный тариф — в калькуляторе выше за 10 минут.
-            </div>
-          </details>
-          <details class="group bg-surface-page rounded-2xl border border-brand-100 shadow-soft overflow-hidden">
-            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-heading hover:bg-brand-50/50">
-              Полис будет в базе НСИС?
-            </summary>
-            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-brand-100 pt-4">
-              Да. Оформляем только официальные полисы с регистрацией в <a href="https://nsis.ru/products/osago/check/" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline underline-offset-2">базе НСИС</a>.
-            </div>
-          </details>
-        </div>
-        <p class="text-center mt-8 text-sm text-slate-500">
-          Больше ответов — на <a href="./#faq" class="text-brand-600 underline underline-offset-2">главной странице</a>.
+  <section id="oformit-polisa" class="bg-white">
+    <div class="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+      <div id="oformit-polisa-target" class="sec-head text-center">
+        <span class="sec-badge">Онлайн-оформление</span>
+        <h2 class="section-title font-bold text-brand-900 px-2">Оформить ОСАГО в Воронеже самому</h2>
+        <p class="sec-lead text-slate-500 max-w-2xl mx-auto px-2">
+          Официальный виджет партнёрской платформы. Договор заключается со страховой компанией. Держите паспорт, СТС/ПТС и водительское удостоверение под рукой.
         </p>
       </div>
-    </section>
 
-    <section id="cta" class="py-12 sm:py-16 bg-surface-page">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="rounded-2xl sm:rounded-3xl bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 p-6 sm:p-10 text-center shadow-glow">
-          <h2 class="text-xl sm:text-2xl font-bold text-white mb-3">Нужна помощь с оформлением в Воронеже?</h2>
-          <p class="text-brand-100 mb-6 max-w-lg mx-auto">Позвоните или напишите — поможем довести расчёт до готового полиса</p>
-          <a href="tel:+79507678575" class="inline-block text-2xl sm:text-3xl font-extrabold text-white mb-6 tracking-tight">8 (950) 767-85-75</a>
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="tel:+79507678575" class="btn-cta">Позвонить</a>
-            <a href="https://t.me/+79507678575" target="_blank" rel="noopener noreferrer" class="btn-messenger">Telegram</a>
-            <a href="https://max.ru/+79191831407" target="_blank" rel="noopener noreferrer" class="btn-messenger">MAX</a>
+      <div class="iframe-wrap rounded-xl sm:rounded-2xl md:rounded-3xl border border-slate-200 bg-slate-50 shadow-soft">
+        <iframe
+          data-src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
+          id="ppdwi"
+          loading="lazy"
+          scrolling="no"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Оформление ОСАГО и КАСКО онлайн для Воронежа"
+        ></iframe>
+      </div>
+
+      <p class="mt-4 text-center text-sm text-muted px-2">
+        Не загружается калькулятор или не получается оформить?
+        <a href="tel:+79507678575" class="text-brand-600 hover:text-brand-700 underline underline-offset-2 font-medium">Позвоните</a>
+        или
+        <a
+          href="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-brand-600 hover:text-brand-700 underline underline-offset-2 font-medium"
+          id="widget-direct-link"
+        >откройте оформление в новом окне</a>
+      </p>
+
+      <aside id="partner-legal" class="border border-slate-200 bg-surface-page shadow-soft" aria-labelledby="partner-legal-title">
+        <h3 id="partner-legal-title" class="font-bold text-heading">Оператор онлайн-оформления</h3>
+        <p class="partner-legal-lead text-body">
+          Калькулятор и оплата полиса работают через сервис партнёрских продаж
+          <strong>ООО «Страховые партнеры»</strong> (сервис онлайн-оформления).
+          Договор страхования заключается с выбранной страховой компанией.
+        </p>
+        <p class="partner-legal-subtitle font-semibold text-heading">Юридические данные разработчика платформы</p>
+        <dl class="partner-legal-grid text-body">
+          <dt class="text-muted">Наименование</dt>
+          <dd class="font-medium text-heading">ООО «Страховые партнеры»</dd>
+          <dt class="text-muted">ИНН / КПП</dt>
+          <dd>9729069737 / 772501001</dd>
+          <dt class="text-muted">ОГРН</dt>
+          <dd>1177746324623</dd>
+          <dt class="text-muted">Юридический адрес</dt>
+          <dd>115432, г.&nbsp;Москва, пр-кт Андропова, д.&nbsp;10, пом.&nbsp;98</dd>
+          <dt class="text-muted">Фактический адрес</dt>
+          <dd>123112, г.&nbsp;Москва, Пресненская наб., д.&nbsp;6, стр.&nbsp;2</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section id="faq" class="bg-surface-page" aria-labelledby="faq-title">
+    <div class="max-w-3xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+      <div class="faq-head text-center">
+        <span class="inline-block px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 text-[0.6875rem] font-semibold mb-1.5 tracking-wide">Вопросы и ответы</span>
+        <h2 id="faq-title" class="section-title font-bold text-heading px-2">Частые вопросы — Воронеж</h2>
+        <p class="text-muted px-2 max-w-xl mx-auto">Онлайн-оформление, цена и проверка в НСИС</p>
+      </div>
+
+      <div id="faq-primary">
+        <details class="group bg-surface-card rounded-2xl border border-brand-100 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 font-semibold text-heading hover:bg-brand-50/50 transition-colors">
+            Можно ли оформить ОСАГО в Воронеже онлайн?
+            <svg class="w-5 h-5 shrink-0 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 text-body text-sm sm:text-base leading-relaxed border-t border-brand-100 pt-4">
+            Да. Оформление полностью дистанционное: расчёт, выбор страховой, оплата и электронный полис на e-mail. В офис ехать не нужно.
+          </div>
+        </details>
+
+        <details class="group bg-surface-card rounded-2xl border border-brand-100 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 font-semibold text-heading hover:bg-brand-50/50 transition-colors">
+            Сколько стоит ОСАГО в Воронеже?
+            <svg class="w-5 h-5 shrink-0 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 text-body text-sm sm:text-base leading-relaxed border-t border-brand-100 pt-4">
+            Цена зависит от мощности автомобиля, КБМ, стажа водителей и выбранной страховой. Точный тариф — в калькуляторе выше за 10 минут.
+          </div>
+        </details>
+
+        <details class="group bg-surface-card rounded-2xl border border-brand-100 shadow-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 font-semibold text-heading hover:bg-brand-50/50 transition-colors">
+            Полис будет в базе НСИС?
+            <svg class="w-5 h-5 shrink-0 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 text-body text-sm sm:text-base leading-relaxed border-t border-brand-100 pt-4">
+              Да. Оформляем только официальные полисы с регистрацией в <a href="https://nsis.ru/products/osago/check/" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:text-brand-700 underline underline-offset-2">базе НСИС</a>.
+          </div>
+        </details>
+      </div>
+
+      <p class="text-center mt-8 text-sm text-muted">
+        Больше ответов — на <a href="./#faq" class="text-brand-600 hover:text-brand-700 underline underline-offset-2">главной странице</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="cta" class="bg-surface-page">
+    <div class="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+      <div class="cta-card relative bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-center shadow-glow overflow-hidden">
+        <div class="absolute inset-0 pattern-overlay opacity-50"></div>
+        <div class="cta-blob absolute -bottom-16 -left-16 bg-accent-500/10 rounded-full blur-3xl" aria-hidden="true"></div>
+        <div class="cta-blob absolute -top-16 -right-16 bg-white/5 rounded-full blur-3xl" aria-hidden="true"></div>
+
+        <div class="relative">
+          <h2 class="cta-title font-bold text-white px-2">
+            Нужна помощь с оформлением в Воронеже?
+          </h2>
+          <p class="cta-lead text-on-dark-muted mx-auto px-2">
+            Позвоните или напишите — поможем оформить ОСАГО или КАСКО онлайн без визита в офис
+          </p>
+
+          <a href="tel:+79507678575" class="cta-phone phone-large inline-block font-extrabold text-white hover:text-cta-100 transition-colors duration-300 tracking-tight px-2">
+            8 (950) 767-85-75
+          </a>
+          <a href="mailto:2020yvwvy2020@gmail.com?subject=%D0%9E%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%9E%D0%A1%D0%90%D0%93%D0%9E" class="cta-email block text-brand-100 hover:text-white transition-colors duration-300 px-2 break-all">
+            2020yvwvy2020@gmail.com
+          </a>
+
+          <div class="cta-actions flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center max-w-lg sm:max-w-none mx-auto">
+            <a href="tel:+79507678575" class="btn-primary">
+              <svg class="shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              Позвонить сейчас
+            </a>
+            <a href="https://t.me/+79507678575?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%9E%D0%A1%D0%90%D0%93%D0%9E" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+              <svg class="shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+              </svg>
+              Написать в Telegram
+            </a>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <aside id="mobile-sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-slate-200 p-3 flex gap-2 shadow-soft" aria-label="Быстрые действия" hidden>
-    <a href="tel:+79507678575" class="mobile-sticky-cta__call flex-1 text-center py-3 rounded-xl bg-brand-700 text-white font-semibold text-sm">Позвонить</a>
-    <a href="#oformit-polisa" class="mobile-sticky-cta__order flex-1 text-center py-3 rounded-xl bg-cta-500 text-white font-semibold text-sm">Оформить</a>
+</main>
+
+
+  <aside id="mobile-sticky-cta" class="mobile-sticky-cta md:hidden" aria-label="Быстрые действия" hidden>
+    <a href="tel:+79507678575" class="mobile-sticky-cta__call">Позвонить</a>
+    <a href="#oformit-polisa" class="mobile-sticky-cta__order">Рассчитать</a>
   </aside>
 
-  <footer class="bg-brand-900 text-brand-200 py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-white font-semibold mb-4">Страхование ОСАГО / КАСКО</p>
-      <p class="text-sm mb-4">
-        <a href="tel:+79507678575" class="text-white hover:text-cta-100">8 (950) 767-85-75</a>
-      </p>
-      <p class="text-xs text-brand-200/85 mb-4 max-w-2xl mx-auto leading-relaxed">
-        Мы не являемся страховой компанией. Находясь на сайте, вы соглашаетесь с обработкой персональных данных и cookie (включая Яндекс.Метрику) по
-        <a href="privacy.html" class="text-accent-300 hover:text-white underline underline-offset-2">политике</a>; информация на сайте не является офертой (ст.&nbsp;437 ГК РФ).
-      </p>
-      <p class="text-xs mb-3">
-        <a href="./" class="text-accent-300 hover:text-white underline underline-offset-2">Главная</a>
-        <span class="mx-2 text-brand-400">·</span>
-        <a href="moscow.html" class="text-accent-300 hover:text-white underline underline-offset-2">Москва</a>
-        <span class="mx-2 text-brand-400">·</span>
-        <a href="spb.html" class="text-accent-300 hover:text-white underline underline-offset-2">Санкт-Петербург</a>
-        <span class="mx-2 text-brand-400">·</span>
-        <a href="https://yvwvy.ru/motorent36/" class="text-accent-300 hover:text-white underline underline-offset-2">Аренда шлемов</a>
-        <span class="mx-2 text-brand-400">·</span>
-        <a href="privacy.html" class="text-accent-300 hover:text-white underline underline-offset-2">Политика конфиденциальности</a>
-      </p>
-      <p class="text-xs text-brand-200/70">&copy; 2026 Страхование ОСАГО / КАСКО</p>
+  <footer class="site-footer bg-brand-900 text-brand-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="footer-top flex flex-col sm:flex-row items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="footer-brand-icon bg-brand-700 flex items-center justify-center">
+            <svg class="text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <span class="footer-brand-name text-white font-semibold">Страхование ОСАГО / КАСКО</span>
+        </div>
+        <div class="footer-contacts flex flex-col items-center sm:items-end">
+          <a href="tel:+79507678575" class="text-white font-medium hover:text-cta-100 transition-colors duration-300 whitespace-nowrap">
+            8 (950) 767-85-75
+          </a>
+          <a href="mailto:2020yvwvy2020@gmail.com" class="text-brand-200 hover:text-cta-100 transition-colors duration-300 break-all">
+            2020yvwvy2020@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-main border-t border-brand-700">
+        <div id="site-operator-legal" class="text-center text-brand-200/85 px-2 mx-auto"></div>
+        <p class="footer-line text-center">
+          <a href="https://nsis.ru/products/osago/check/" target="_blank" rel="noopener noreferrer" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Проверка полиса ОСАГО в базе НСИС</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="https://nsis.ru/" target="_blank" rel="noopener noreferrer" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">nsis.ru</a>
+        </p>
+        <p class="footer-line footer-line--tight text-on-dark-muted text-center max-w-3xl mx-auto px-1">
+          <strong class="text-brand-100">Мы не являемся страховой компанией.</strong> Консультируем и помогаем оформить полис у лицензированных страховщиков.
+        </p>
+        <p class="footer-line footer-nav text-center">
+          <a href="./" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Главная</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="./#faq" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Вопросы и ответы</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="voronezh.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">ОСАГО в Воронеже</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="moscow.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Москва</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="spb.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Санкт-Петербург</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="https://yvwvy.ru/motorent36/" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 hover:text-amber-200 transition-colors font-semibold">Аренда шлемов →</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="#partner-legal" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Платформа оформления</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="privacy.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Политика конфиденциальности</a>
+        </p>
+        <p class="footer-copy text-brand-200/70 text-center">
+          &copy; 2026 Страхование ОСАГО / КАСКО. Все права защищены.
+        </p>
+      </div>
     </div>
   </footer>
 
+  <script src="assets/legal.js"></script>
+  <script>
+    renderSiteLegal('site-operator-legal', {
+      titleClass: 'text-brand-100',
+      textClass: 'text-brand-200/80',
+      hintClass: 'text-brand-200/60'
+    });
+  </script>
   <script src="assets/site.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {

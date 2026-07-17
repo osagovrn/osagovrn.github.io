@@ -100,6 +100,8 @@
 
 - Главная: /
 
+- Продлить ОСАГО онлайн: /prodlenie-osago.html
+
 - ОСАГО в Воронеже: /voronezh.html
 
 - ОСАГО в Москве: /moscow.html
