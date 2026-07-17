@@ -1804,11 +1804,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 0.65rem 1rem;
-      border-radius: 0.75rem;
-      font-size: 0.875rem;
+      width: auto;
+      max-width: 100%;
+      flex: 0 0 auto;
+      min-height: clamp(2rem, 2.2vw + 1.4rem, 2.5rem);
+      padding: clamp(0.35rem, 0.5vw + 0.25rem, 0.55rem) clamp(0.65rem, 1vw + 0.4rem, 1rem);
+      border-radius: 0.55rem;
+      font-size: clamp(0.75rem, 0.35vw + 0.68rem, 0.875rem);
       font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
       text-decoration: none;
       transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
@@ -1816,7 +1821,7 @@
     .location-map__btn--primary {
       background: var(--color-brand-dark);
       color: #fff;
-      border: 2px solid var(--color-brand-dark);
+      border: 1.5px solid var(--color-brand-dark);
     }
 
     .location-map__btn--primary:hover {
@@ -1826,12 +1831,29 @@
     .location-map__btn--ghost {
       background: #fff;
       color: var(--color-brand-dark);
-      border: 2px solid var(--color-brand-100);
+      border: 1.5px solid var(--color-brand-100);
     }
 
     .location-map__btn--ghost:hover {
       background: var(--color-brand-50);
       border-color: var(--color-brand);
+    }
+
+    .location-map__actions {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.4rem;
+      width: auto;
+      max-width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      .location-map__actions {
+        justify-content: flex-end;
+      }
     }
 
     /* FAQ — компактный блок без смены визуального языка */
@@ -2753,7 +2775,22 @@
     }
 
     #gde-my .location-map__actions {
-      gap: 0.4rem;
+      gap: 0.35rem;
+      align-self: flex-start;
+    }
+
+    @media (min-width: 1024px) {
+      #gde-my .location-map__actions {
+        align-self: flex-end;
+      }
+    }
+
+    #gde-my .location-map__btn {
+      min-height: clamp(1.875rem, 1.8vw + 1.35rem, 2.25rem);
+      padding: clamp(0.3rem, 0.4vw + 0.22rem, 0.45rem) clamp(0.55rem, 0.9vw + 0.35rem, 0.85rem);
+      font-size: clamp(0.6875rem, 0.3vw + 0.62rem, 0.8125rem);
+      border-radius: 0.45rem;
+      border-width: 1.5px;
     }
 
     #gde-my .location-map__frame {
@@ -2801,14 +2838,6 @@
       border-radius: 0.4rem;
       font-size: 0.6875rem;
       line-height: 1.3;
-    }
-
-    #gde-my .location-map__btn {
-      min-height: 36px;
-      padding: 0.4rem 0.75rem;
-      font-size: 0.75rem;
-      border-radius: 0.55rem;
-      border-width: 1.5px;
     }
 
     /* Prices / coverage — лёгкое уплотнение */
@@ -3689,7 +3718,7 @@
             Работаем дистанционно по всей России; встречу согласуем по телефону или в мессенджере.
           </p>
         </div>
-        <div class="location-map__actions flex flex-col sm:flex-row shrink-0">
+        <div class="location-map__actions shrink-0">
           <a
             class="location-map__btn location-map__btn--primary"
             href="https://yandex.ru/maps/?ll=39.323545%2C51.581948&z=15&pt=39.323545,51.581948,pm2rdm&l=map&text=%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%2C%20%D1%83%D0%BB.%20%D0%90%D0%BD%D0%B8%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%BE%D0%B2%D0%BE%D0%B9"
