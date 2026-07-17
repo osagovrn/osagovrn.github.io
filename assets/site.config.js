@@ -25,7 +25,9 @@ window.SITE = {
       { id: 'check_policy_nsis', label: 'Проверка полиса НСИС', direct: false },
       { id: 'click_widget_direct', label: 'Виджет — прямая ссылка', direct: false },
       { id: 'copy_widget_link', label: 'Скопировать ссылку виджета', direct: false },
-      { id: 'view_city_voronezh', label: 'Просмотр voronezh.html', direct: false }
+      { id: 'view_city_voronezh', label: 'Просмотр voronezh.html', direct: false },
+      { id: 'view_city_moscow', label: 'Просмотр moscow.html', direct: false },
+      { id: 'view_city_spb', label: 'Просмотр spb.html', direct: false }
     ]
   },
   legal: {

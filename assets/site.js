@@ -245,7 +245,7 @@
     }
 
     function onScroll() {
-      setVisible(window.scrollY > 280);
+      setVisible(window.scrollY > 80);
     }
 
     if (orderSection && 'IntersectionObserver' in window) {

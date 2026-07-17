@@ -3,9 +3,7 @@ package-lock.json
 
 # Локальная разработка — не публикуем на GitHub
 ПРОЧЕЕ/
-ПРОЧЕЕ_СТАТУС.txt
 .mimocode/
-_db_*.py
 
 .DS_Store
 Thumbs.db
