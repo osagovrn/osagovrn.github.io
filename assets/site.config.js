@@ -15,7 +15,6 @@ window.SITE = {
     googleAnalyticsId: '',
     googleAdsId: '',
     // Цели JavaScript (reachGoal) — создать в Метрике: Настройки → Цели → JavaScript-событие
-    // Подробно: ПРОЧЕЕ/МЕТРИКА_ЦЕЛИ.txt
     metrikaGoals: [
       { id: 'click_phone', label: 'Звонок (tel:)', direct: true },
       { id: 'click_order_form', label: 'Оформить полис (#oformit-polisa)', direct: true },
