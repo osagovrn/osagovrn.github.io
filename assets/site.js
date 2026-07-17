@@ -29,14 +29,16 @@
   function getScrollOffset() {
     var header = document.querySelector('header');
     var base = header ? Math.ceil(header.getBoundingClientRect().height) : 72;
-    return base + 8;
+    return base + 16;
   }
 
   function getScrollBottomInset() {
-    if (isProgrammaticScroll()) return 0;
-    var bar = document.getElementById('mobile-sticky-cta');
-    if (!bar || bar.hidden) return 0;
     if (window.matchMedia('(min-width: 768px)').matches) return 0;
+    // Учитываем резерв padding даже если бар временно скрыт при программном скролле
+    if (!document.body.classList.contains('has-mobile-cta')) return 0;
+    var bar = document.getElementById('mobile-sticky-cta');
+    if (!bar) return 0;
+    if (bar.hidden) return 72;
     return Math.ceil(bar.getBoundingClientRect().height) + 8;
   }
 
@@ -116,7 +118,13 @@
 
   function scrollToHash(hash, options) {
     if (!hash || hash === '#') return false;
-    var id = decodeURIComponent(String(hash).replace(/^#/, ''));
+    var raw = String(hash).replace(/^#/, '');
+    var id;
+    try {
+      id = decodeURIComponent(raw);
+    } catch (e) {
+      id = raw;
+    }
     if (!id) return false;
 
     if (id === 'oformit-polisa') {
@@ -159,11 +167,20 @@
     window.__osagoScrollOrderPending = true;
     scrollToken += 1;
     var token = scrollToken;
+    var settled = false;
 
-    beginProgrammaticScroll(1400);
+    beginProgrammaticScroll(2200);
 
     if (options.loadIframe !== false) {
       loadOrderIframe();
+    }
+
+    function finishPending() {
+      if (settled) return;
+      settled = true;
+      window.__osagoScrollOrderPending = false;
+      beginProgrammaticScroll(0);
+      window.dispatchEvent(new Event('scroll'));
     }
 
     function correct(instant) {
@@ -173,19 +190,21 @@
       if (el) scrollToElement(el, { instant: instant });
     }
 
-    // Первый заход: сразу точный скролл (без smooth), потом добивки после layout
     window.requestAnimationFrame(function () {
       correct(true);
       window.setTimeout(function () { correct(true); }, 60);
       window.setTimeout(function () { correct(true); }, 180);
       window.setTimeout(function () { correct(true); }, 400);
       window.setTimeout(function () { correct(true); }, 700);
+      window.setTimeout(function () { correct(true); }, 1200);
       window.setTimeout(function () {
         if (token !== scrollToken) return;
         correct(true);
-        window.__osagoScrollOrderPending = false;
-        beginProgrammaticScroll(0);
-        window.dispatchEvent(new Event('scroll'));
+        // Не снимаем pending сразу — ждём load iframe (см. loadOrderIframe)
+        window.setTimeout(function () {
+          if (token !== scrollToken) return;
+          finishPending();
+        }, 2800);
       }, 1100);
     });
 
@@ -195,6 +214,16 @@
         correct(true);
       }).catch(function () {});
     }
+
+    window.__osagoFinishOrderScroll = function () {
+      if (token !== scrollToken) return;
+      correct(true);
+      window.setTimeout(function () {
+        if (token !== scrollToken) return;
+        correct(true);
+        finishPending();
+      }, 200);
+    };
   }
 
   function loadOrderIframe() {
@@ -203,7 +232,7 @@
 
     function scheduleCorrect() {
       if (!window.__osagoScrollOrderPending) return;
-      var delays = [80, 250, 500, 900];
+      var delays = [80, 250, 500, 900, 1600];
       delays.forEach(function (ms) {
         window.setTimeout(function () {
           if (!window.__osagoScrollOrderPending) return;
@@ -212,6 +241,11 @@
           if (target) scrollToElement(target, { instant: true });
         }, ms);
       });
+      window.setTimeout(function () {
+        if (typeof window.__osagoFinishOrderScroll === 'function') {
+          window.__osagoFinishOrderScroll();
+        }
+      }, 1800);
     }
 
     if (!iframe.getAttribute('src')) {
@@ -223,7 +257,6 @@
       return;
     }
 
-    // iframe уже грузится/загружен — всё равно корректируем позицию
     scheduleCorrect();
   }
 
@@ -254,7 +287,7 @@
             return;
           }
         }
-      }, { rootMargin: '400px 0px', threshold: 0 });
+      }, { rootMargin: '200px 0px', threshold: 0 });
       observer.observe(iframe);
       return;
     }
@@ -264,6 +297,7 @@
 
   function initEngagementTracking() {
     document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+      if (link.classList.contains('mobile-sticky-cta__call')) return;
       link.addEventListener('click', function () { trackGoal('click_phone'); });
     });
 
@@ -297,7 +331,17 @@
   }
 
   function initOrderWidgetPreload() {
-    // ppdw.js подключается вместе с iframe (initOrderIframeLazyLoad / scrollToOrderTarget).
+    var armed = false;
+    function arm() {
+      if (armed) return;
+      armed = true;
+      preloadOrderWidgetScript();
+    }
+    document.querySelectorAll('a[href="#oformit-polisa"], .mobile-sticky-cta__order').forEach(function (el) {
+      el.addEventListener('pointerenter', arm, { once: true, passive: true });
+      el.addEventListener('touchstart', arm, { once: true, passive: true });
+      el.addEventListener('focus', arm, { once: true });
+    });
   }
 
   function initMobileStickyCta() {
@@ -321,13 +365,14 @@
         document.body.classList.remove('has-mobile-cta');
         return;
       }
-      // Во время программного скролла не показываем sticky — иначе цель «уезжает»
+      var shouldShow = show && !orderVisible;
+      // Во время программного скролла скрываем бар визуально, но оставляем padding —
+      // иначе цель «прыгает» при появлении бара
       if (isProgrammaticScroll()) {
         bar.hidden = true;
-        document.body.classList.remove('has-mobile-cta');
+        document.body.classList.toggle('has-mobile-cta', shouldShow);
         return;
       }
-      var shouldShow = show && !orderVisible;
       bar.hidden = !shouldShow;
       document.body.classList.toggle('has-mobile-cta', shouldShow);
     }
@@ -383,8 +428,22 @@
 
     function closeMobileMenu() {
       if (!menu || !menu.classList.contains('open')) return;
+      menu.classList.remove('open');
+      menu.setAttribute('aria-hidden', 'true');
+      if ('inert' in HTMLElement.prototype) menu.setAttribute('inert', '');
       var toggle = document.getElementById('menu-toggle');
-      if (toggle) toggle.click();
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Открыть меню');
+      }
+      var iconOpen = document.getElementById('menu-icon-open');
+      var iconClose = document.getElementById('menu-icon-close');
+      if (iconOpen) iconOpen.classList.remove('hidden');
+      if (iconClose) iconClose.classList.add('hidden');
+      document.body.classList.remove('menu-open');
+      document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+        link.setAttribute('tabindex', '-1');
+      });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
@@ -393,7 +452,13 @@
       var href = link.getAttribute('href');
       if (!href || href === '#') return;
 
-      var id = decodeURIComponent(href.slice(1));
+      var rawId = href.slice(1);
+      var id;
+      try {
+        id = decodeURIComponent(rawId);
+      } catch (err) {
+        id = rawId;
+      }
       if (!id || !document.getElementById(id)) return;
 
       link.addEventListener('click', function (e) {
@@ -403,7 +468,6 @@
 
         var runScroll = function () {
           var isOrder = id === 'oformit-polisa';
-          // К форме — всегда точный скролл (первый визит / ленивый iframe)
           scrollToHash(href, { instant: isOrder || !!fromMobileMenu });
           if (isOrder) trackGoal('click_order_form');
           if (history.replaceState) {
@@ -444,8 +508,12 @@
       if (iconOpen) iconOpen.classList.toggle('hidden', isOpen);
       if (iconClose) iconClose.classList.toggle('hidden', !isOpen);
       setLinkFocusable(isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
       if (isOpen) {
         menu.removeAttribute('inert');
+        if (links[0]) {
+          window.setTimeout(function () { links[0].focus(); }, 50);
+        }
       } else {
         if ('inert' in HTMLElement.prototype) menu.setAttribute('inert', '');
       }
@@ -466,6 +534,7 @@
       var target = e.target;
       if (toggle.contains(target) || menu.contains(target)) return;
       setMenuOpen(false);
+      toggle.focus();
     });
 
     document.addEventListener('keydown', function (e) {
@@ -483,10 +552,10 @@
   function initPolicyCheck() {
     var NSIS_TS_URL = 'https://nsis.ru/products/osago/check/';
     var PLATE_RE = /^[ABEKMHOPCTYX]\d{3}[ABEKMHOPCTYX]{2}\d{2,3}$/;
-    var VIN_RE = /^[A-HJ-NPR-Z0-9]{17}$/i;
+    var VIN_RE = /^[A-HJ-NPR-Z0-9]{17}$/;
     var PLATE_LETTER_MAP = {
       'A': 'A', 'А': 'A',
-      'B': 'B', 'В': 'B', 'V': 'B',
+      'B': 'B', 'В': 'B',
       'E': 'E', 'Е': 'E',
       'K': 'K', 'К': 'K',
       'M': 'M', 'М': 'M',
@@ -505,10 +574,11 @@
     var vehicleInput = document.getElementById('check-vehicle');
     var vehicleError = document.getElementById('check-vehicle-error');
     var checkBtn = document.getElementById('btn-check-policy');
+    var checkKbmBtn = document.getElementById('btn-check-kbm');
     var copyNotice = document.getElementById('check-copy-notice');
 
-    function normalizeVehicle(value) {
-      var compact = value.trim().toUpperCase().replace(/\s/g, '');
+    function normalizePlate(value) {
+      var compact = value.trim().toUpperCase().replace(/[\s-]/g, '');
       var out = '';
       var i;
       for (i = 0; i < compact.length; i++) {
@@ -524,13 +594,26 @@
         }
         return null;
       }
-      return out;
+      return PLATE_RE.test(out) ? out : null;
+    }
+
+    function normalizeVin(value) {
+      var compact = value.trim().toUpperCase().replace(/[\s-]/g, '');
+      // VIN: без I, O, Q; без кириллической подмены (V остаётся V)
+      if (!VIN_RE.test(compact)) return null;
+      return compact;
+    }
+
+    function normalizeVehicle(value) {
+      var compact = value.trim().toUpperCase().replace(/[\s-]/g, '');
+      if (compact.length === 17) {
+        return normalizeVin(compact);
+      }
+      return normalizePlate(compact);
     }
 
     function isValidVehicle(value) {
-      var v = normalizeVehicle(value);
-      if (!v) return false;
-      return PLATE_RE.test(v) || VIN_RE.test(v);
+      return !!normalizeVehicle(value);
     }
 
     function showNotice(text) {
@@ -539,21 +622,44 @@
       copyNotice.classList.remove('hidden');
     }
 
-    tabs.forEach(function (tab) {
+    function activateTab(tab) {
+      var isPolicy = tab.getAttribute('data-tab') === 'policy';
+      tabs.forEach(function (t) {
+        var selected = t === tab;
+        t.setAttribute('aria-selected', selected ? 'true' : 'false');
+        t.setAttribute('tabindex', selected ? '0' : '-1');
+      });
+      if (panelPolicy) {
+        panelPolicy.classList.toggle('active', isPolicy);
+        panelPolicy.hidden = !isPolicy;
+      }
+      if (panelKbm) {
+        panelKbm.classList.toggle('active', !isPolicy);
+        panelKbm.hidden = isPolicy;
+      }
+      if (copyNotice) copyNotice.classList.add('hidden');
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.setAttribute('tabindex', tab.getAttribute('aria-selected') === 'true' ? '0' : '-1');
       tab.addEventListener('click', function () {
-        var isPolicy = tab.getAttribute('data-tab') === 'policy';
-        tabs.forEach(function (t) {
-          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-        });
-        if (panelPolicy) {
-          panelPolicy.classList.toggle('active', isPolicy);
-          panelPolicy.hidden = !isPolicy;
+        activateTab(tab);
+      });
+      tab.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          next = tabs[(index + 1) % tabs.length];
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          next = tabs[(index - 1 + tabs.length) % tabs.length];
+        } else if (e.key === 'Home') {
+          next = tabs[0];
+        } else if (e.key === 'End') {
+          next = tabs[tabs.length - 1];
         }
-        if (panelKbm) {
-          panelKbm.classList.toggle('active', !isPolicy);
-          panelKbm.hidden = isPolicy;
-        }
-        if (copyNotice) copyNotice.classList.add('hidden');
+        if (!next) return;
+        e.preventDefault();
+        activateTab(next);
+        next.focus();
       });
     });
 
@@ -568,7 +674,7 @@
     function runPolicyCheck() {
       if (!vehicleInput) return;
       var value = normalizeVehicle(vehicleInput.value);
-      if (!value || !isValidVehicle(vehicleInput.value)) {
+      if (!value) {
         vehicleInput.classList.add('invalid');
         if (vehicleError) vehicleError.classList.add('visible');
         return;
@@ -606,6 +712,12 @@
 
     if (checkBtn) {
       checkBtn.addEventListener('click', runPolicyCheck);
+    }
+
+    if (checkKbmBtn) {
+      checkKbmBtn.addEventListener('click', function () {
+        trackGoal('check_kbm_nsis');
+      });
     }
   }
 
@@ -694,6 +806,10 @@
 
   function initDeferredOrderScroll() {
     var env = getEnv();
+
+    // Обновление страницы — не прыгаем к форме
+    if (env.isPageReload && env.isPageReload()) return;
+
     var shouldScroll = env.storageGet
       ? env.storageGet('osago-scroll-order') === '1'
       : null;
@@ -723,50 +839,11 @@
     if (!url) return;
 
     var link = document.getElementById('widget-direct-link');
-    if (link) {
-      link.href = url;
-      link.addEventListener('click', function () {
-        trackGoal('click_widget_direct');
-      });
-    }
+    if (!link) return;
 
-    var shareUrl = document.getElementById('widget-share-url');
-    if (shareUrl) shareUrl.textContent = url;
-
-    var copyBtn = document.getElementById('widget-share-copy');
-    if (!copyBtn) return;
-
-    copyBtn.addEventListener('click', function () {
-      function onCopied() {
-        trackGoal('copy_widget_link');
-        copyBtn.textContent = 'Скопировано';
-        window.setTimeout(function () {
-          copyBtn.textContent = 'Скопировать ссылку';
-        }, 2000);
-      }
-
-      function legacyCopy() {
-        var ta = document.createElement('textarea');
-        ta.value = url;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
-        var ok = false;
-        try {
-          ok = document.execCommand('copy');
-        } catch (e) {}
-        document.body.removeChild(ta);
-        if (ok) onCopied();
-        else window.prompt('Скопируйте ссылку на расчёт:', url);
-      }
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(onCopied).catch(legacyCopy);
-      } else {
-        legacyCopy();
-      }
+    link.href = url;
+    link.addEventListener('click', function () {
+      trackGoal('click_widget_direct');
     });
   }
 
@@ -791,8 +868,6 @@
     });
   }
 
-  initAnalytics();
-
   document.addEventListener('DOMContentLoaded', function () {
     initScrollLinks();
     initEngagementTracking();
@@ -805,5 +880,12 @@
     initDeferredOrderScroll();
     initWidgetDirectLink();
     initFaqToggle();
+
+    var startAnalytics = function () { initAnalytics(); };
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(startAnalytics, { timeout: 2500 });
+    } else {
+      window.setTimeout(startAnalytics, 1200);
+    }
   });
 })();

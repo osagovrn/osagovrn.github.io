@@ -24,20 +24,33 @@ window.SITE = {
       { id: 'click_call_sticky', label: 'Звонок (sticky-панель)', direct: false },
       { id: 'check_policy_nsis', label: 'Проверка полиса НСИС', direct: false },
       { id: 'click_widget_direct', label: 'Виджет — прямая ссылка', direct: false },
-      { id: 'copy_widget_link', label: 'Скопировать ссылку виджета', direct: false },
       { id: 'view_city_voronezh', label: 'Просмотр voronezh.html', direct: false },
       { id: 'view_city_moscow', label: 'Просмотр moscow.html', direct: false },
       { id: 'view_city_spb', label: 'Просмотр spb.html', direct: false }
     ]
   },
   legal: {
+    // Самозанятый (НПД). ФИО и ИНН намеренно не публикуются на сайте —
+    // предоставляются по запросу субъекта ПДн / контрагента.
+    status: 'self_employed',
     entityName: '',
     inn: '',
     ogrn: '',
-    address: '',
-    role: 'Консультации и помощь в оформлении полисов ОСАГО и КАСКО. Сайт не является страховой компанией.',
+    address: 'г. Воронеж, ул. Ани Максимовой',
+    addressNote: 'ориентир для встречи по договорённости, не офис продаж',
+    role: 'Самозанятый. Консультации и помощь в оформлении полисов ОСАГО и КАСКО. Сайт не является страховой компанией: договор страхования заключается с лицензированной страховой организацией через партнёрскую платформу. Полные идентификационные данные оператора предоставляются по запросу.',
     phone: '+79507678575',
     email: '2020yvwvy2020@gmail.com'
+  },
+  location: {
+    city: 'Воронеж',
+    street: 'ул. Ани Максимовой',
+    address: 'г. Воронеж, ул. Ани Максимовой',
+    addressNote: 'ориентир для встречи по договорённости, не офис продаж',
+    locality: 'мкр. Никольское',
+    landmark: 'Машметом',
+    lat: 51.581948,
+    lon: 39.323545
   },
   partner: {
     legalName: 'ООО «Страховые партнеры»',

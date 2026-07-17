@@ -56,6 +56,9 @@
         return;
       } catch (e) {}
     }
+    // Без fallback в localStorage для флагов навигации —
+    // иначе скролл «залипает» между визитами.
+    if (key === 'osago-scroll-order') return;
     if (storageAvailable('localStorage')) {
       try {
         localStorage.setItem(key, value);
@@ -70,6 +73,7 @@
         if (sessionValue != null) return sessionValue;
       } catch (e) {}
     }
+    if (key === 'osago-scroll-order') return null;
     if (storageAvailable('localStorage')) {
       try {
         return localStorage.getItem(key);
@@ -87,6 +91,23 @@
     } catch (e) {}
   }
 
+  function isPageReload() {
+    try {
+      var entries = window.performance && performance.getEntriesByType
+        ? performance.getEntriesByType('navigation')
+        : null;
+      if (entries && entries.length && entries[0].type) {
+        return entries[0].type === 'reload';
+      }
+    } catch (e) {}
+    try {
+      if (window.performance && performance.navigation) {
+        return performance.navigation.type === 1;
+      }
+    } catch (e2) {}
+    return false;
+  }
+
   var local = isLocalHost();
 
   window.SITE_ENV = {
@@ -101,6 +122,7 @@
     storageSet: storageSet,
     storageGet: storageGet,
     storageRemove: storageRemove,
+    isPageReload: isPageReload,
     supportsSmoothScroll: 'scrollBehavior' in document.documentElement.style
   };
 
@@ -108,11 +130,33 @@
     history.scrollRestoration = 'manual';
   }
 
-  if (loc.hash === '#oformit-polisa') {
-    storageSet('osago-scroll-order', '1');
-    if (history.replaceState) {
+  // F5 / обновление: всегда сверху, без прыжка к старому #якорю
+  if (isPageReload()) {
+    storageRemove('osago-scroll-order');
+    if (loc.hash && history.replaceState) {
       history.replaceState(null, '', getPagePath());
     }
+    var resetTop = function () {
+      window.scrollTo(0, 0);
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    };
+    resetTop();
+    window.addEventListener('DOMContentLoaded', resetTop, { once: true });
+    window.addEventListener('load', resetTop, { once: true });
+  } else if (loc.hash === '#oformit-polisa') {
+    // На http→https не пишем sessionStorage до редиректа (разные origins).
+    // Хэш оставляем в URL редиректа; на https снимаем и ставим флаг.
+    if (loc.protocol === 'https:' || local || loc.protocol === 'file:') {
+      storageSet('osago-scroll-order', '1');
+      if (history.replaceState) {
+        history.replaceState(null, '', getPagePath());
+      }
+    }
+  } else {
+    try {
+      localStorage.removeItem('osago-scroll-order');
+    } catch (e) {}
   }
 
   if (!local && loc.protocol === 'http:') {
