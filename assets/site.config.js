@@ -1,5 +1,5 @@
 window.SITE = {
-  url: 'https://osagovrn.github.io/',
+  url: 'https://yvwvy.ru/',
   region: {
     coverage: 'По всей России',
     mode: 'Дистанционно, без визита в офис',
@@ -7,13 +7,27 @@ window.SITE = {
     exampleCities: ['Воронеж', 'Москва', 'Санкт-Петербург', 'любой город РФ']
   },
   verify: {
-    yandex: 'ea57d1fd75c2d5d0',
+    yandex: '1af17763f142092c',
     google: ''
   },
   analytics: {
     yandexMetrikaId: '109807317',
     googleAnalyticsId: '',
-    googleAdsId: ''
+    googleAdsId: '',
+    // Цели JavaScript (reachGoal) — создать в Метрике: Настройки → Цели → JavaScript-событие
+    // Подробно: ПРОЧЕЕ/МЕТРИКА_ЦЕЛИ.txt
+    metrikaGoals: [
+      { id: 'click_phone', label: 'Звонок (tel:)', direct: true },
+      { id: 'click_order_form', label: 'Оформить полис (#oformit-polisa)', direct: true },
+      { id: 'click_telegram', label: 'Telegram', direct: true },
+      { id: 'click_max', label: 'MAX', direct: true },
+      { id: 'click_email', label: 'Email (mailto:)', direct: false },
+      { id: 'click_call_sticky', label: 'Звонок (sticky-панель)', direct: false },
+      { id: 'check_policy_nsis', label: 'Проверка полиса НСИС', direct: false },
+      { id: 'click_widget_direct', label: 'Виджет — прямая ссылка', direct: false },
+      { id: 'copy_widget_link', label: 'Скопировать ссылку виджета', direct: false },
+      { id: 'view_city_voronezh', label: 'Просмотр voronezh.html', direct: false }
+    ]
   },
   legal: {
     entityName: '',

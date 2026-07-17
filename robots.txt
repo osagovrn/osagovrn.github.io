@@ -29,10 +29,10 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://osagovrn.github.io/sitemap.xml
-Sitemap: https://osagovrn.github.io/sitemap.txt
+Sitemap: https://yvwvy.ru/sitemap.xml
+Sitemap: https://yvwvy.ru/sitemap.txt
 
-# Главное зеркало для Яндекса (без www)
-Host: osagovrn.github.io
+# Главное зеркало (без www)
+Host: yvwvy.ru
 
 # Краткое описание сайта для LLM: /llms.txt
