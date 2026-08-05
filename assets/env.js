@@ -166,7 +166,18 @@
   } else if (!local && loc.protocol === 'https:') {
     var csp = document.createElement('meta');
     csp.httpEquiv = 'Content-Security-Policy';
-    csp.content = 'upgrade-insecure-requests';
+    // Внимание: meta-CSP не поддерживает frame-ancestors — эта директива
+    // работает только через HTTP-заголовок (см. _headers/.htaccess/web.config/vercel.json).
+    csp.content =
+      "default-src 'self'; " +
+      "script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.googletagmanager.com; " +
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      "font-src 'self' https://fonts.gstatic.com data:; " +
+      "img-src 'self' data: https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org; " +
+      "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.google-analytics.com https://www.googletagmanager.com; " +
+      "frame-src https://b2c.pampadu.ru https://yandex.ru; " +
+      "base-uri 'self'; form-action 'self'; object-src 'none'; " +
+      'upgrade-insecure-requests';
     document.head.appendChild(csp);
   }
 })(window);

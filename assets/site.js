@@ -882,10 +882,12 @@
     initFaqToggle();
 
     var startAnalytics = function () { initAnalytics(); };
-    if (window.requestIdleCallback) {
-      window.requestIdleCallback(startAnalytics, { timeout: 2500 });
-    } else {
-      window.setTimeout(startAnalytics, 1200);
-    }
+
+    // Аналитика запускается через cookie-баннер (assets/cookie-banner.js):
+    // баннер проверяет согласие и вызывает startAnalytics после клика "ОК"
+    // или сразу, если согласие уже было дано ранее.
+    window.__osagoStartAnalytics = function () { startAnalytics(); };
+    var siteCfg = (window.SITE || {}).analytics || {};
+    window.__osagoHasAnalytics = !!(siteCfg.yandexMetrikaId || siteCfg.googleAnalyticsId);
   });
 })();

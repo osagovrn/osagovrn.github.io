@@ -2,6 +2,7 @@
 <html lang="ru" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -188,50 +189,6 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://b2c.pampadu.ru" crossorigin>
   <link rel="stylesheet" href="assets/tailwind.css" id="tailwind-local">
-  <script>
-    (function () {
-      var tailwindConfig = {
-        theme: {
-          extend: {
-            screens: { xs: '375px' },
-            colors: {
-              brand: {
-                50: '#EFF6FF', 100: '#DBEAFE', 200: '#BFDBFE', 500: '#3B82F6',
-                600: '#2563EB', 700: '#1D4ED8', 800: '#1E40AF', 900: '#1E3A8A',
-              },
-              cta: { 50: '#F0FDFA', 100: '#CCFBF1', 500: '#0D9488', 600: '#0F766E', 700: '#115E59' },
-              accent: { 200: '#BFDBFE', 300: '#93C5FD', 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8' },
-              heading: '#1E293B',
-              surface: { page: '#F7F9FC', muted: '#F1F5F9', card: '#FFFFFF' },
-            },
-            fontFamily: {
-              sans: ['Source Sans 3', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-              display: ['Onest', 'system-ui', 'sans-serif'],
-            },
-            boxShadow: {
-              soft: '0 1px 2px rgba(11, 37, 69, 0.06)',
-              card: '0 1px 3px rgba(11, 37, 69, 0.08)',
-            },
-          },
-        },
-      };
-
-      function loadTailwindCdn() {
-        if (document.getElementById('tailwind-cdn')) return;
-        var local = document.getElementById('tailwind-local');
-        if (local) local.remove();
-        var s = document.createElement('script');
-        s.id = 'tailwind-cdn';
-        s.src = 'https://cdn.tailwindcss.com?plugins=forms';
-        s.onload = function () { window.tailwind.config = tailwindConfig; };
-        document.head.appendChild(s);
-      }
-
-      var localLink = document.getElementById('tailwind-local');
-      if (localLink) localLink.addEventListener('error', loadTailwindCdn);
-      else loadTailwindCdn();
-    })();
-  </script>
   <style id="font-lock">
     html, body {
       font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
@@ -407,6 +364,15 @@
         </p>
       </div>
 
+      <div class="phone-layout-notice" role="note">
+        <svg class="phone-layout-notice__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-8.99 3.75h.01"/>
+        </svg>
+        <span>
+          <strong>Важно:</strong> номер машины в форме нужно вводить <strong>на русской раскладке</strong> — иначе виджет может не давать вводить данные.
+        </span>
+      </div>
+
       <div class="iframe-wrap rounded-xl sm:rounded-2xl md:rounded-3xl border border-slate-200 bg-slate-50 shadow-soft">
         <iframe
           data-src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
@@ -414,6 +380,7 @@
           loading="lazy"
           scrolling="no"
           referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
           title="Продлить ОСАГО онлайн в калькуляторе"
         ></iframe>
       </div>
@@ -596,7 +563,7 @@
           <span class="text-brand-400 mx-2">·</span>
           <a href="spb.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Санкт-Петербург</a>
           <span class="text-brand-400 mx-2">·</span>
-          <a href="https://yvwvy.ru/motorent36/" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 hover:text-amber-200 transition-colors font-semibold">Аренда шлемов →</a>
+          <a href="osago-inostrancam.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">For foreigners / Для иностранцев</a>
           <span class="text-brand-400 mx-2">·</span>
           <a href="#partner-legal" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Платформа оформления</a>
           <span class="text-brand-400 mx-2">·</span>
@@ -617,7 +584,9 @@
       hintClass: 'text-brand-200/60'
     });
   </script>
+  <script src="assets/ADMINKA.js" defer></script>
   <script src="assets/site.js" defer></script>
+  <script src="assets/cookie-banner.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (typeof window.trackGoal === 'function') {

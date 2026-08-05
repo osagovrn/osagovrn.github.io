@@ -2,6 +2,7 @@
 <html lang="ru" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -87,7 +88,7 @@
         "email": "2020yvwvy2020@gmail.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "ул. Ани Максимовой",
+          "streetAddress": "ул. Дубянского, 4",
           "addressLocality": "Воронеж",
           "addressRegion": "Воронежская область",
           "addressCountry": "RU",
@@ -95,8 +96,8 @@
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 51.581948,
-          "longitude": 39.323545
+          "latitude": 51.585261,
+          "longitude": 39.317311
         },
         "areaServed": { "@type": "Country", "name": "Россия" },
         "knowsAbout": ["ОСАГО", "КАСКО", "НСИС", "электронный полис", "проверка полиса"],
@@ -388,50 +389,6 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://b2c.pampadu.ru" crossorigin>
   <link rel="stylesheet" href="assets/tailwind.css" id="tailwind-local">
-  <script>
-    (function () {
-      var tailwindConfig = {
-        theme: {
-          extend: {
-            screens: { xs: '375px' },
-            colors: {
-              brand: {
-                50: '#EFF6FF', 100: '#DBEAFE', 200: '#BFDBFE', 500: '#3B82F6',
-                600: '#2563EB', 700: '#1D4ED8', 800: '#1E40AF', 900: '#1E3A8A',
-              },
-              cta: { 50: '#F0FDFA', 100: '#CCFBF1', 500: '#0D9488', 600: '#0F766E', 700: '#115E59' },
-              accent: { 200: '#BFDBFE', 300: '#93C5FD', 400: '#60A5FA', 500: '#2563EB', 600: '#1D4ED8' },
-              heading: '#1E293B',
-              surface: { page: '#F7F9FC', muted: '#F1F5F9', card: '#FFFFFF' },
-            },
-            fontFamily: {
-              sans: ['Source Sans 3', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-              display: ['Onest', 'system-ui', 'sans-serif'],
-            },
-            boxShadow: {
-              soft: '0 1px 2px rgba(11, 37, 69, 0.06)',
-              card: '0 1px 3px rgba(11, 37, 69, 0.08)',
-            },
-          },
-        },
-      };
-
-      function loadTailwindCdn() {
-        if (document.getElementById('tailwind-cdn')) return;
-        var local = document.getElementById('tailwind-local');
-        if (local) local.remove();
-        var s = document.createElement('script');
-        s.id = 'tailwind-cdn';
-        s.src = 'https://cdn.tailwindcss.com?plugins=forms';
-        s.onload = function () { window.tailwind.config = tailwindConfig; };
-        document.head.appendChild(s);
-      }
-
-      var localLink = document.getElementById('tailwind-local');
-      if (localLink) localLink.addEventListener('error', loadTailwindCdn);
-      else loadTailwindCdn();
-    })();
-  </script>
   <style id="font-lock">
     html, body {
       font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
@@ -698,31 +655,6 @@
     </div>
   </section>
 
-  <!-- Кросс-реклама: аренда мотошлемов -->
-  <aside class="motorent-promo" aria-label="Также: аренда мотошлемов MotoRent36">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="https://yvwvy.ru/motorent36/" class="motorent-promo__card group">
-        <div class="motorent-promo__body">
-          <span class="motorent-promo__icon" aria-hidden="true">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c2.5 1.2 4 3.2 4 5.5 0 1.5-.6 2.8-1.5 3.8L16 18H8l1.5-5.7C8.6 11.3 8 10 8 8.5 8 6.2 9.5 4.2 12 3z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18h6v1.5a1.5 1.5 0 01-1.5 1.5h-3A1.5 1.5 0 019 19.5V18z"/>
-            </svg>
-          </span>
-          <div class="min-w-0">
-            <p class="motorent-promo__eyebrow">Ещё от нас · MotoRent36</p>
-            <p class="motorent-promo__title">Аренда мотошлемов в Воронеже</p>
-            <p class="motorent-promo__text">От 500&nbsp;₽/сутки · бронь по телефону или в Telegram · тот же контакт, что и здесь</p>
-          </div>
-        </div>
-        <span class="motorent-promo__cta">
-          Смотреть аренду
-          <span aria-hidden="true" class="transition group-hover:translate-x-0.5">→</span>
-        </span>
-      </a>
-    </div>
-  </aside>
-
   <!-- Benefits -->
   <section id="benefits" class="bg-surface-page">
     <div class="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
@@ -937,6 +869,15 @@
         </p>
       </div>
 
+      <div class="phone-layout-notice" role="note">
+        <svg class="phone-layout-notice__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-8.99 3.75h.01"/>
+        </svg>
+        <span>
+          <strong>Важно:</strong> номер машины в форме нужно вводить <strong>на русской раскладке</strong> — иначе виджет может не давать вводить данные.
+        </span>
+      </div>
+
       <div class="iframe-wrap rounded-xl sm:rounded-2xl md:rounded-3xl border border-slate-200 bg-slate-50 shadow-soft">
         <iframe
           data-src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
@@ -944,6 +885,7 @@
           loading="lazy"
           scrolling="no"
           referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
           title="Оформление страхового полиса ОСАГО и КАСКО"
         ></iframe>
       </div>
@@ -1174,8 +1116,8 @@
           <span class="section-label">Локация</span>
           <h2 id="gde-my-title" class="section-title font-bold text-heading">Где мы на карте</h2>
           <p class="sec-lead text-body">
-            <strong class="text-heading">г.&nbsp;Воронеж, ул.&nbsp;Ани Максимовой</strong>
-            — мкр.&nbsp;Никольское, рядом с Машметом.
+            <strong class="text-heading">г.&nbsp;Воронеж, ул.&nbsp;Дубянского, 4</strong>
+            — мкр.&nbsp;Никольское.
             Это ориентир для встречи по договорённости, <strong class="text-heading">не офис продаж</strong>.
             Работаем дистанционно по всей России; встречу согласуем по телефону или в мессенджере.
           </p>
@@ -1183,34 +1125,106 @@
         <div class="location-map__actions shrink-0">
           <a
             class="location-map__btn location-map__btn--primary"
-            href="https://yandex.ru/maps/?ll=39.323545%2C51.581948&z=15&pt=39.323545,51.581948,pm2rdm&l=map&text=%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%2C%20%D1%83%D0%BB.%20%D0%90%D0%BD%D0%B8%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%BE%D0%B2%D0%BE%D0%B9"
+            href="https://yandex.ru/maps/?ll=39.317311%2C51.585261&z=15&pt=39.317311,51.585261,pm2rdm&l=map&text=%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%2C%20%D1%83%D0%BB.%20%D0%94%D1%83%D0%B1%D1%8F%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE"
             target="_blank"
             rel="noopener noreferrer"
           >Яндекс.Карты →</a>
           <a
             class="location-map__btn location-map__btn--ghost"
-            href="yandexnavi://build_route_on_map?lat_to=51.581948&lon_to=39.323545"
+            href="yandexnavi://build_route_on_map?lat_to=51.585261&lon_to=39.317311"
           >Навигатор →</a>
         </div>
       </div>
 
       <div class="location-map__frame">
         <span class="location-map__pin" aria-hidden="true">
-          <span class="location-map__pin-dot"></span>
-          ул. Ани Максимовой
+          <span class="location-map__pin-shield">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </span>
+          ул. Дубянского, 4
         </span>
         <p class="location-map__caption">
-          Никольское · Машмет · <strong class="text-heading">ул.&nbsp;Ани Максимовой</strong> · ориентир, не офис
+          Никольское · <strong class="text-heading">ул.&nbsp;Дубянского, 4</strong> · ориентир, не офис
         </p>
         <div class="location-map__embed">
           <iframe
-            title="Карта: г. Воронеж, ул. Ани Максимовой"
-            src="https://yandex.ru/map-widget/v1/?ll=39.323545%2C51.581948&z=15&pt=39.323545,51.581948,pm2rdm&l=map"
+            title="Карта: г. Воронеж, ул. Дубянского, 4"
+            src="https://yandex.ru/map-widget/v1/?ll=39.317311%2C51.585261&z=16&pt=39.317311,51.585261,pm2rdm&l=map"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin allow-popups"
             allowfullscreen
           ></iframe>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Другие наши проекты в Воронеже -->
+  <section id="local-services" class="local-promo" aria-labelledby="local-services-title">
+    <div class="max-w-6xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+      <div class="local-promo__head">
+        <span class="local-promo__eyebrow">Ещё в Воронеже</span>
+        <h2 id="local-services-title" class="local-promo__title">Другие наши проекты</h2>
+        <p class="local-promo__lead">Мы локальная команда в Воронеже — вот чем ещё занимаемся, кроме страхования</p>
+      </div>
+
+      <div class="local-promo__grid">
+        <a href="https://beri36.ru/" target="_blank" rel="nofollow noopener noreferrer" class="local-promo__card local-promo__card--amber">
+          <span class="local-promo__tag">Наш проект</span>
+          <svg viewBox="0 0 40 40" class="local-promo__logo" aria-hidden="true">
+            <rect width="40" height="40" rx="10" fill="#18181b"/>
+            <circle cx="20" cy="20" r="12" fill="none" stroke="#f59e0b" stroke-width="2"/>
+            <circle cx="20" cy="20" r="9.5" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.45"/>
+            <path d="M13 23c1.5-6 3.8-8.5 7-8.5s5.5 2.5 7 8.5" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+            <rect x="15.5" y="18.5" width="9" height="2.4" rx="1" fill="#f59e0b"/>
+          </svg>
+          <span class="local-promo__body">
+            <span class="local-promo__name">Аренда мотошлема в Воронеже</span>
+            <span class="local-promo__desc">От 500 ₽/сутки · прокат JIEKAI JK902</span>
+            <span class="local-promo__cta local-promo__cta--amber">
+              beri36.ru
+              <span aria-hidden="true">→</span>
+            </span>
+          </span>
+        </a>
+
+        <a href="https://skladvrn.ru/" target="_blank" rel="nofollow noopener noreferrer" class="local-promo__card local-promo__card--sky">
+          <span class="local-promo__tag">Наш проект</span>
+          <svg viewBox="0 0 48 48" class="local-promo__logo" aria-hidden="true">
+            <rect width="48" height="48" rx="12" fill="#0B0F17"/>
+            <path d="M24 6 L40 15 V33 L24 42 L8 33 V15 Z" fill="none" stroke="#F5A623" stroke-width="2"/>
+            <path d="M24 12 L34 18 V30 L24 36 L14 30 V18 Z" fill="none" stroke="#F5A623" stroke-width="1.5"/>
+            <text x="24" y="25" text-anchor="middle" dominant-baseline="central" font-family="Oswald, sans-serif" font-size="15" font-weight="700" fill="#F5A623">Е</text>
+          </svg>
+          <span class="local-promo__body">
+            <span class="local-promo__name">Склад Евгения</span>
+            <span class="local-promo__desc">Кабель и пожарное оборудование · опт и розница</span>
+            <span class="local-promo__cta local-promo__cta--sky">
+              skladvrn.ru
+              <span aria-hidden="true">→</span>
+            </span>
+          </span>
+        </a>
+        <a href="https://elenaperm.ru/" target="_blank" rel="nofollow noopener noreferrer" class="local-promo__card local-promo__card--rose">
+          <span class="local-promo__tag">Наш проект</span>
+          <svg viewBox="0 0 48 48" class="local-promo__logo" aria-hidden="true">
+            <rect width="48" height="48" rx="12" fill="#0B0F17"/>
+            <circle cx="24" cy="24" r="14" fill="none" stroke="#F43F5E" stroke-width="2"/>
+            <path d="M18 28 C18 24, 24 20, 24 20 C24 20, 30 24, 30 28" fill="none" stroke="#F43F5E" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="18" r="2" fill="#F43F5E"/>
+          </svg>
+          <span class="local-promo__body">
+            <span class="local-promo__name">Перманентный макияж — Елена</span>
+            <span class="local-promo__desc">Брови и губы · натуральный результат · Воронеж</span>
+            <span class="local-promo__cta local-promo__cta--rose">
+              elenaperm.ru
+              <span aria-hidden="true">→</span>
+            </span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -1316,13 +1330,19 @@
           <span class="text-brand-400 mx-2">·</span>
           <a href="prodlenie-osago.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Продлить ОСАГО</a>
           <span class="text-brand-400 mx-2">·</span>
+          <a href="osago-inostrancam.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">For foreigners / Для иностранцев</a>
+          <span class="text-brand-400 mx-2">·</span>
           <a href="voronezh.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">ОСАГО в Воронеже</a>
           <span class="text-brand-400 mx-2">·</span>
           <a href="moscow.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Москва</a>
           <span class="text-brand-400 mx-2">·</span>
           <a href="spb.html" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Санкт-Петербург</a>
           <span class="text-brand-400 mx-2">·</span>
-          <a href="https://yvwvy.ru/motorent36/" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 hover:text-amber-200 transition-colors font-semibold">Аренда шлемов →</a>
+          <a href="https://beri36.ru/" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 hover:text-amber-200 transition-colors font-semibold">Аренда мотошлемов →</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="https://skladvrn.ru/" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-300 hover:bg-sky-500/30 hover:text-sky-200 transition-colors font-semibold">Кабель и пожарное оборудование →</a>
+          <span class="text-brand-400 mx-2">·</span>
+          <a href="https://elenaperm.ru/" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 hover:text-rose-200 transition-colors font-semibold">Перманентный макияж →</a>
           <span class="text-brand-400 mx-2">·</span>
           <a href="#partner-legal" class="text-accent-300 hover:text-white transition-colors underline underline-offset-2">Платформа оформления</a>
           <span class="text-brand-400 mx-2">·</span>
@@ -1346,7 +1366,9 @@
       hintClass: 'text-brand-200/60'
     });
   </script>
+  <script src="assets/ADMINKA.js" defer></script>
   <script src="assets/site.js" defer></script>
+  <script src="assets/cookie-banner.js" defer></script>
 
 </body>
 </html>

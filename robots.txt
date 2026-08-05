@@ -32,7 +32,4 @@ Allow: /
 Sitemap: https://yvwvy.ru/sitemap.xml
 Sitemap: https://yvwvy.ru/sitemap.txt
 
-# Главное зеркало (без www)
-Host: yvwvy.ru
-
 # Краткое описание сайта для LLM: /llms.txt
