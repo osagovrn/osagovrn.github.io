@@ -87,32 +87,37 @@
     }
   }
 
-  /** Повторные проходы — ловят сдвиг от sticky CTA, шрифтов и iframe */
+  /** Повторные проходы — ловят сдвиг от sticky CTA, шрифтов и iframe.
+   *  Важно: гладкий (smooth) скролл здесь не используется. Smooth и
+   *  последующие мгновенные корректировки соревнуются за window.scrollTo,
+   *  из-за чего на нестабильной высоте страницы (lazy-load, шрифты)
+   *  позиция «приезжает через раз». Поэтому первый и все дальнейшие
+   *  проходы — мгновенные, а плавность даёт CSS scroll-behavior: smooth
+   *  на html (короткий и предсказуемый), либо не даётся вообще. */
   function scrollToElementReliable(el, options) {
     options = options || {};
     if (!el) return;
     scrollToken += 1;
     var token = scrollToken;
-    var preferInstant = !!options.instant;
 
     beginProgrammaticScroll(1000);
 
-    function pass(instant) {
+    function pass() {
       if (token !== scrollToken) return;
-      scrollToElement(el, { instant: instant });
+      scrollToElement(el, { instant: true });
     }
 
     window.requestAnimationFrame(function () {
-      pass(preferInstant);
-      window.setTimeout(function () { pass(true); }, 80);
-      window.setTimeout(function () { pass(true); }, 220);
-      window.setTimeout(function () { pass(true); }, 500);
+      pass();
+      window.setTimeout(pass, 120);
+      window.setTimeout(pass, 300);
+      window.setTimeout(pass, 600);
       window.setTimeout(function () {
         if (token !== scrollToken) return;
-        pass(true);
+        pass();
         beginProgrammaticScroll(0);
         window.dispatchEvent(new Event('scroll'));
-      }, 850);
+      }, 950);
     });
   }
 
@@ -868,6 +873,42 @@
     });
   }
 
+  // Компактный дропдаун переключателя языков (используется в шапке index.html
+  // и на всех страницах гида "ОСАГО для иностранцев"). Пункты — обычные <a href>
+  // на реальные страницы, JS только открывает/закрывает меню.
+  function initLangDropdowns() {
+    var roots = document.querySelectorAll('.lang-dropdown');
+    if (!roots.length) return;
+
+    function closeAll() {
+      for (var i = 0; i < roots.length; i++) {
+        roots[i].classList.remove('open');
+        var t = roots[i].querySelector('.lang-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    for (var i = 0; i < roots.length; i++) {
+      (function (root) {
+        var toggle = root.querySelector('.lang-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var willOpen = !root.classList.contains('open');
+          closeAll();
+          if (willOpen) {
+            root.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      })(roots[i]);
+    }
+    document.addEventListener('click', closeAll);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initScrollLinks();
     initEngagementTracking();
@@ -880,6 +921,7 @@
     initDeferredOrderScroll();
     initWidgetDirectLink();
     initFaqToggle();
+    initLangDropdowns();
 
     var startAnalytics = function () { initAnalytics(); };
 

@@ -108,6 +108,25 @@
     return false;
   }
 
+  // Переход по кнопке "Назад"/"Вперёд" в браузере (не F5, не обычный клик по ссылке).
+  function isBackForwardNav() {
+    try {
+      var entries = window.performance && performance.getEntriesByType
+        ? performance.getEntriesByType('navigation')
+        : null;
+      if (entries && entries.length && entries[0].type) {
+        return entries[0].type === 'back_forward';
+      }
+    } catch (e) {}
+    try {
+      if (window.performance && performance.navigation) {
+        return performance.navigation.type === 2;
+      }
+    } catch (e2) {}
+    return false;
+  }
+
+  var SCROLL_POS_PREFIX = 'osago-scroll-pos:';
   var local = isLocalHost();
 
   window.SITE_ENV = {
@@ -144,6 +163,27 @@
     resetTop();
     window.addEventListener('DOMContentLoaded', resetTop, { once: true });
     window.addEventListener('load', resetTop, { once: true });
+  } else if (isBackForwardNav()) {
+    // Кнопка "Назад"/"Вперёд": браузерное scrollRestoration отключено выше
+    // (иначе конфликтует с нашей ручной докруткой на других переходах),
+    // поэтому сами возвращаем человека туда, где он был на этой странице,
+    // вместо прыжка наверх.
+    var savedY = null;
+    try {
+      var raw = storageGet(SCROLL_POS_PREFIX + getPagePath());
+      savedY = raw != null ? parseInt(raw, 10) : null;
+    } catch (eBF) {}
+    if (savedY != null && !isNaN(savedY) && savedY > 0) {
+      var restoreTop = function () {
+        window.scrollTo(0, savedY);
+      };
+      restoreTop();
+      window.addEventListener('DOMContentLoaded', restoreTop, { once: true });
+      window.addEventListener('load', restoreTop, { once: true });
+      // Повторная попытка чуть позже — на случай, если шрифты/картинки
+      // ещё меняют высоту страницы в момент восстановления.
+      window.setTimeout(restoreTop, 300);
+    }
   } else if (loc.hash === '#oformit-polisa') {
     // На http→https не пишем sessionStorage до редиректа (разные origins).
     // Хэш оставляем в URL редиректа; на https снимаем и ставим флаг.
@@ -171,8 +211,8 @@
     csp.content =
       "default-src 'self'; " +
       "script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.googletagmanager.com; " +
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-      "font-src 'self' https://fonts.gstatic.com data:; " +
+      "style-src 'self' 'unsafe-inline'; " +
+      "font-src 'self' data:; " +
       "img-src 'self' data: https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org; " +
       "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.google-analytics.com https://www.googletagmanager.com; " +
       "frame-src https://b2c.pampadu.ru https://yandex.ru; " +
@@ -180,4 +220,25 @@
       'upgrade-insecure-requests';
     document.head.appendChild(csp);
   }
+
+  // Запоминаем текущую позицию скролла (throttled), чтобы кнопка "Назад"
+  // могла вернуть человека туда же, а не наверх страницы (см. блок выше).
+  var scrollSaveTimer = null;
+  function saveScrollPos() {
+    try {
+      var y = window.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || 0;
+      storageSet(SCROLL_POS_PREFIX + getPagePath(), String(Math.round(y)));
+    } catch (e) {}
+  }
+  window.addEventListener('scroll', function () {
+    if (scrollSaveTimer) return;
+    scrollSaveTimer = window.setTimeout(function () {
+      scrollSaveTimer = null;
+      saveScrollPos();
+    }, 200);
+  }, { passive: true });
+  window.addEventListener('pagehide', saveScrollPos);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') saveScrollPos();
+  });
 })(window);

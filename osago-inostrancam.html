@@ -1,351 +1,342 @@
 <!DOCTYPE html>
+
 <html lang="ru" prefix="og: https://ogp.me/ns#">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-
-  <script src="assets/env.js"></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext">
-  <link rel="icon" href="favicon.ico" sizes="32x32">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/tailwind.css" id="tailwind-local">
-  <style id="font-lock">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<script src="assets/env.js"></script>
+<!-- Шрифты теперь захостены локально (assets/fonts.css) — убран блокирующий
+       запрос к fonts.googleapis.com из критического пути отрисовки. -->
+<link href="assets/fonts.css" rel="stylesheet"/>
+<link href="favicon.ico" rel="icon" sizes="32x32"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/tailwind.css" id="tailwind-local" rel="stylesheet"/>
+<style id="font-lock">
     html, body {
       font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
     }
     h1, h2, h3, h4, .font-extrabold, .font-bold { font-family: 'Onest', system-ui, sans-serif !important; }
   </style>
-  <link rel="stylesheet" href="assets/site-ui.css">
+<link href="assets/site-ui.min.css" rel="stylesheet"/>
+<script src="assets/site.config.js"></script>
+<title>ОСАГО для иностранных граждан — гид по оформлению в России</title>
+<meta content="Подробная инструкция для иностранных граждан: как оформить ОСАГО в России, какие документы нужны, как пользоваться онлайн-калькулятором." name="description"/>
+<meta content="Страхование ОСАГО / КАСКО" name="author"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<meta content="index, follow" name="yandex"/>
+<meta content="1af17763f142092c" name="yandex-verification"/>
+<meta content="#0B2545" name="theme-color"/>
+<meta content="telephone=yes" name="format-detection"/>
+<link href="https://yvwvy.ru/osago-inostrancam.html" rel="canonical"/><!-- Полноценный кластер hreflang: у каждой из 6 языковых версий страницы — свой собственный URL с реально переведённым и проиндексированным контентом. x-default ведёт на русскую версию как основную. --><link href="https://yvwvy.ru/osago-inostrancam.html" hreflang="ru" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-en.html" hreflang="en" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-zh.html" hreflang="zh" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-uz.html" hreflang="uz" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-tg.html" hreflang="tg" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-kk.html" hreflang="kk" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-ky.html" hreflang="ky" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-hy.html" hreflang="hy" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam-ka.html" hreflang="ka" rel="alternate"/><link href="https://yvwvy.ru/osago-inostrancam.html" hreflang="x-default" rel="alternate"/>
+<meta content="website" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Страхование ОСАГО / КАСКО" property="og:site_name"/>
+<meta content="ОСАГО для иностранных граждан — гид по оформлению в России" property="og:title"/>
+<meta content="Подробная инструкция для иностранных граждан: как оформить ОСАГО в России, какие документы нужны, как пользоваться онлайн-калькулятором." property="og:description"/>
+<meta content="https://yvwvy.ru/osago-inostrancam.html" property="og:url"/>
+<meta content="https://yvwvy.ru/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
 
-  <script src="assets/site.config.js"></script>
-
-  <title data-i18n="pageTitle">ОСАГО для иностранных граждан — гид по оформлению в России</title>
-  <meta name="description" data-i18n="pageDesc" content="Подробная инструкция для иностранных граждан: как оформить ОСАГО в России, какие документы нужны, как пользоваться онлайн-калькулятором.">
-  <meta name="author" content="Страхование ОСАГО / КАСКО">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="yandex" content="index, follow">
-  <meta name="yandex-verification" content="1af17763f142092c">
-  <meta name="theme-color" content="#0B2545">
-  <meta name="format-detection" content="telephone=yes">
-
-  <link rel="canonical" href="https://yvwvy.ru/osago-inostrancam.html">
-  <link rel="alternate" hreflang="ru" href="https://yvwvy.ru/osago-inostrancam.html">
-  <link rel="alternate" hreflang="en" href="https://yvwvy.ru/osago-inostrancam.html">
-  <link rel="alternate" hreflang="uz" href="https://yvwvy.ru/osago-inostrancam.html">
-  <link rel="alternate" hreflang="tg" href="https://yvwvy.ru/osago-inostrancam.html">
-  <link rel="alternate" hreflang="kk" href="https://yvwvy.ru/osago-inostrancam.html">
-  <link rel="alternate" hreflang="x-default" href="https://yvwvy.ru/osago-inostrancam.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Страхование ОСАГО / КАСКО">
-  <meta property="og:title" content="ОСАГО для иностранных граждан — гид по оформлению в России">
-  <meta property="og:description" content="Подробная инструкция для иностранных граждан: как оформить ОСАГО в России, какие документы нужны.">
-  <meta property="og:url" content="https://yvwvy.ru/osago-inostrancam.html">
-  <meta property="og:image" content="https://yvwvy.ru/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Могу ли я оформить ОСАГО без российского паспорта?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да. Для онлайн-оформления через виджет выберите тип документа «Иностранный паспорт». У вас должна быть временная регистрация или ВНЖ в России."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Моё водительское удостоверение (другой страны) подойдёт?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Если ваша страна участвует в Венской конвенции о дорожном движении 1968 года (большинство стран СНГ, Европы и многие другие) — да, ваше национальное ВУ подойдёт. Для других стран может потребоваться международное ВУ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько стоит ОСАГО?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Стоимость зависит от региона, мощности двигателя, стажа водителей и бонуса-малуса (КБМ). Пример: для легкового автомобиля B-класса с 1 водителем в регионе III — от ~4 200 ₽. Точную стоимость покажет калькулятор."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько времени занимает оформление?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Около 60 минут при самостоятельном заполнении. Если возникнут сложности — звоните, поможем."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что делать, если виджет не принимает мои документы?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Позвоните или напишите нам — мы поможем оформить полис вручную через страховую компанию. Телефон и Telegram указаны выше."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Нужна ли «Зелёная карта»?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "«Зелёная карта» нужна для автомобиля, зарегистрированного за рубежом и временно въезжающего в Россию. Если ваш автомобиль зарегистрирован в РФ — вам нужно российское ОСАГО."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли оформить КАСКО?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да, КАСКО оформляется добровольно. Условия и стоимость зависят от страховой компании. Напишите нам для подбора тарифа."
+      }
+    }
+  ]
+}</script>
 </head>
 <body class="antialiased bg-surface-page text-slate-600">
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-soft">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 text-brand-700 hover:text-brand-900 transition-colors font-semibold">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-        <span data-i18n="navHome">На главную</span>
-      </a>
-      <a href="#oformit" class="inline-flex items-center gap-1.5 bg-cta-500 hover:bg-cta-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-        <span data-i18n="navOrder">Оформить ОСАГО</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </header>
-
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
-
-    <!-- Language Switcher -->
-    <div id="i18n-switcher" class="i18n-switcher">
-      <!-- Заполняется JS -->
-    </div>
-
-    <!-- Title -->
-    <div class="text-center mb-10">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-heading mb-3" data-i18n="heading">ОСАГО для иностранных граждан</h1>
-      <p class="text-lg text-slate-500 max-w-2xl mx-auto" data-i18n="subheading">Пошаговая инструкция по оформлению полиса ОСАГО в России для иностранных граждан</p>
-    </div>
-
-    <!-- Section: Кто может -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
-        <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">1</span>
-        <span data-i18n="whoTitle">Кто может оформить ОСАГО в России</span>
-      </h2>
-      <p class="mb-4" data-i18n="whoIntro">Обязательное страхование автогражданской ответственности (ОСАГО) должны оформлять все владельцы транспортных средств, зарегистрированных в России, независимо от гражданства.</p>
-
-      <div class="bg-white rounded-xl border border-slate-200 p-5 mb-4 shadow-card">
-        <h3 class="font-bold text-heading mb-2" data-i18n="whoEaes">Граждане стран ЕАЭС (Евразийский экономический союз)</h3>
-        <p data-i18n="whoEaesList">Беларусь, Казахстан, Армения, Кыргызстан. Водительские удостоверения этих стран признаются в России без обмена. Оформление ОСАГО — на общих основаниях.</p>
-      </div>
-
-      <div class="bg-white rounded-xl border border-slate-200 p-5 mb-4 shadow-card">
-        <h3 class="font-bold text-heading mb-2" data-i18n="whoOther">Граждане других стран</h3>
-        <p data-i18n="whoOtherList">Оформить ОСАГО можно, но потребуется: иностранный паспорт, водительское удостоверение (признаваемое в РФ — см. ниже), документы на автомобиль (СТС/ПТС) и временная регистрация или вид на жительство в России.</p>
-      </div>
-
-      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-800 text-sm">
-        <strong>⚠️</strong> <span data-i18n="whoImportant">Важно: автомобиль должен быть зарегистрирован в России. Для автомобилей на иностранных номерах нужна «Зелёная карта» или оформление в стране регистрации ТС.</span>
-      </div>
-    </section>
-
-    <!-- Section: Документы -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
-        <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">2</span>
-        <span data-i18n="docsTitle">Какие документы нужны</span>
-      </h2>
-
-      <div class="space-y-4">
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
-          <h3 class="font-bold text-heading mb-1" data-i18n="docsPassport">Паспорт</h3>
-          <p class="text-sm" data-i18n="docsPassportText">Российский или иностранный паспорт. При оформлении онлайн через калькулятор выберите тип документа «Иностранный паспорт».</p>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
-          <h3 class="font-bold text-heading mb-1" data-i18n="docsVu">Водительское удостоверение (ВУ)</h3>
-          <p class="text-sm mb-2" data-i18n="docsVuText">Российское ВУ — принимается без ограничений. Иностранное ВУ — принимается, если страна выдала его по Венской конвенции 1968 года (большинство стран Европы и СНГ). Для стран вне конвенции может потребоваться международное ВУ (МВУ) или обмен на российское.</p>
-          <div class="bg-green-50 border border-green-200 rounded-lg p-3 text-green-800 text-xs">
-            <span data-i18n="docsVuNote">Центробанк РФ подтвердил: страховщики обязаны оформлять ОСАГО водителям с иностранными ВУ на тех же условиях, что и с российскими.</span>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
-          <h3 class="font-bold text-heading mb-1" data-i18n="docsCar">Документы на автомобиль</h3>
-          <p class="text-sm" data-i18n="docsCarText">Свидетельство о регистрации ТС (СТС) или паспорт транспортного средства (ПТС). Автомобиль должен быть зарегистрирован в РФ.</p>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
-          <h3 class="font-bold text-heading mb-1" data-i18n="docsReg">Регистрация в России</h3>
-          <p class="text-sm" data-i18n="docsRegText">Временная регистрация (миграционная карта с отметкой) или вид на жительство (ВНЖ). Без регистрации в РФ онлайн-оформление через виджет невозможно.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Как оформить -->
-    <section class="mb-10" id="oformit">
-      <h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
-        <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">3</span>
-        <span data-i18n="stepsTitle">Как оформить ОСАГО (3 шага)</span>
-      </h2>
-      <p class="mb-6 text-sm text-slate-500" data-i18n="stepsIntro">Оформление через онлайн-калькулятор на нашем сайте. Виджет на русском языке — если вам нужна помощь, позвоните нам, мы поможем по телефону.</p>
-
-      <div class="space-y-6">
-        <div class="flex gap-4">
-          <div class="shrink-0 w-10 h-10 rounded-full bg-cta-500 text-white flex items-center justify-center font-bold text-lg">1</div>
-          <div>
-            <h3 class="font-bold text-heading mb-1" data-i18n="step1Title">Заполните калькулятор</h3>
-            <p class="text-sm mb-2" data-i18n="step1Text">Введите данные автомобиля (госномер или VIN), ваш паспорт и водительское удостоверение. Сканы загружать не нужно — всё вводится вручную.</p>
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-blue-800 text-xs" data-i18n="step1Note">Совет: номер автомобиля вводите на русской раскладке клавиатуры (А, В, Е, К, М, Н, О, Р, С, Т, У, Х).</div>
-          </div>
-        </div>
-
-        <div class="flex gap-4">
-          <div class="shrink-0 w-10 h-10 rounded-full bg-cta-500 text-white flex items-center justify-center font-bold text-lg">2</div>
-          <div>
-            <h3 class="font-bold text-heading mb-1" data-i18n="step2Title">Выберите тариф и оплатите</h3>
-            <p class="text-sm" data-i18n="step2Text">Система покажет предложения страховых компаний. Выберите подходящий тариф и оплатите картой. Электронный полис придёт на e-mail.</p>
-          </div>
-        </div>
-
-        <div class="flex gap-4">
-          <div class="shrink-0 w-10 h-10 rounded-full bg-cta-500 text-white flex items-center justify-center font-bold text-lg">3</div>
-          <div>
-            <h3 class="font-bold text-heading mb-1" data-i18n="step3Title">Не получилось? Напишите или позвоните</h3>
-            <p class="text-sm mb-3" data-i18n="step3Text">Если виджет не принял документы или появилась ошибка — позвоните или напишите нам. Мы поможем оформить вручную.</p>
-            <div class="flex flex-wrap gap-2">
-              <a href="tel:+79507678575" class="inline-flex items-center gap-1 bg-brand-700 hover:bg-brand-800 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                <span data-i18n="step3Phone">Позвонить</span>
-              </a>
-              <a href="https://t.me/+79507678575" class="inline-flex items-center gap-1 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-                <span data-i18n="step3Telegram">Написать в Telegram</span>
-              </a>
-              <a href="mailto:2020yvwvy2020@gmail.com" class="inline-flex items-center gap-1 bg-slate-600 hover:bg-slate-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-                <span data-i18n="step3Email">Написать на почту</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Widget -->
-      <div class="mt-8 bg-white rounded-xl border border-slate-200 shadow-card overflow-hidden">
-        <iframe id="pampadu-widget" src="about:blank" data-src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c" class="w-full border-0" style="height:620px;" loading="lazy" title="Калькулятор ОСАГО"></iframe>
-      </div>
-      <p class="mt-3 text-sm text-slate-500 text-center">
-        <span data-i18n="stepsIntro"></span>
-      </p>
-    </section>
-
-    <!-- Section: Переводчик -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
-        <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">4</span>
-        <span data-i18n="translateTitle">Как перевести страницу на свой язык</span>
-      </h2>
-      <p class="mb-4" data-i18n="translateIntro">Виджет ОСАГО работает только на русском языке. Но вы можете использовать встроенный переводчик браузера, чтобы перевести текст на этой странице:</p>
-
-      <div class="space-y-4">
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="text-2xl">🌐</span>
-            <h3 class="font-bold text-heading" data-i18n="translateChrome">Google Chrome / Яндекс Браузер</h3>
-          </div>
-          <p class="text-sm" data-i18n="translateChromeSteps">Нажмите правую кнопку мыши на странице → выберите «Перевести на [язык]» в появившемся меню. Или: нажмите на иконку перевода 💬 в адресной строке.</p>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="text-2xl">🧭</span>
-            <h3 class="font-bold text-heading" data-i18n="translateSafari">Safari (iPhone / Mac)</h3>
-          </div>
-          <p class="text-sm" data-i18n="translateSafariSteps">Нажмите на кнопку «аа» в адресной строке → выберите «Translate to [language]».</p>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="text-2xl">🔵</span>
-            <h3 class="font-bold text-heading" data-i18n="translateEdge">Microsoft Edge</h3>
-          </div>
-          <p class="text-sm" data-i18n="translateEdgeSteps">Нажмите правую кнопку мыши → «Перевести на [язык]». Или нажмите иконку перевода в адресной строке.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Ограничения -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
-        <span class="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center text-sm font-bold">!</span>
-        <span data-i18n="limitsTitle">Важные ограничения</span>
-      </h2>
-      <ul class="space-y-3">
-        <li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
-          <span class="shrink-0 text-lg">1.</span>
-          <span data-i18n="limits1">Вероятность одобрения полиса по иностранным документам ниже, чем по российским. Это связано с особенностями автоматической проверки документов страховыми компаниями.</span>
-        </li>
-        <li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
-          <span class="shrink-0 text-lg">2.</span>
-          <span data-i18n="limits2">Без временной регистрации или ВНЖ в России онлайн-оформление невозможно — система не пропустит.</span>
-        </li>
-        <li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
-          <span class="shrink-0 text-lg">3.</span>
-          <span data-i18n="limits3">Автомобиль должен быть зарегистрирован в РФ. Для машин с иностранными номерами ОСАГО не оформляется — нужна «Зелёная карта».</span>
-        </li>
-        <li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
-          <span class="shrink-0 text-lg">4.</span>
-          <span data-i18n="limits4">Водительские удостоверения стран, не входящих в Венскую конвенцию 1968 года, могут не приниматься онлайн. В этом случае обращайтесь к нам — поможем разобраться.</span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Section: FAQ -->
-    <section class="mb-10">
-      <h2 class="text-xl font-bold text-heading mb-6" data-i18n="faqTitle">Частые вопросы</h2>
-      <div class="space-y-4">
-
-        <details class="bg-white rounded-xl border border-slate-200 shadow-card group">
-          <summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
-            <span data-i18n="faq1q">Могу ли я оформить ОСАГО без российского паспорта?</span>
-            <svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-5 pb-4 text-sm text-slate-600" data-i18n="faq1a">Да. Для онлайн-оформления через виджет выберите тип документа «Иностранный паспорт». У вас должна быть временная регистрация или ВНЖ в России.</div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 shadow-card group">
-          <summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
-            <span data-i18n="faq2q">Моё водительское удостоверение (другой страны) подойдёт?</span>
-            <svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-5 pb-4 text-sm text-slate-600" data-i18n="faq2a">Если ваша страна участвует в Венской конвенции о дорожном движении 1968 года (большинство стран СНГ, Европы и многие другие) — да, ваше национальное ВУ подойдёт. Для других стран может потребоваться международное ВУ.</div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 shadow-card group">
-          <summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
-            <span data-i18n="faq3q">Сколько стоит ОСАГО?</span>
-            <svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-5 pb-4 text-sm text-slate-600" data-i18n="faq3a">Стоимость зависит от региона, мощности двигателя, стажа водителей и бонуса-малуса (КБМ). Пример: для легкового автомобиля B-класса с 1 водителем в регионе III — от ~4 200 ₽. Точную стоимость покажет калькулятор.</div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 shadow-card group">
-          <summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
-            <span data-i18n="faq4q">Сколько времени занимает оформление?</span>
-            <svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-5 pb-4 text-sm text-slate-600" data-i18n="faq4a">Около 60 минут при самостоятельном заполнении. Если возникнут сложности — звоните, поможем.</div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 shadow-card group">
-          <summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
-            <span data-i18n="faq5q">Что делать, если виджет не принимает мои документы?</span>
-            <svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-5 pb-4 text-sm text-slate-600" data-i18n="faq5a">Позвоните или напишите нам — мы поможем оформить полис вручную через страховую компанию. Телефон и Telegram указаны выше.</div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 shadow-card group">
-          <summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
-            <span data-i18n="faq6q">Нужна ли «Зелёная карта»?</span>
-            <svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-5 pb-4 text-sm text-slate-600" data-i18n="faq6a">«Зелёная карта» нужна для автомобиля, зарегистрированного за рубежом и временно въезжающего в Россию. Если ваш автомобиль зарегистрирован в РФ — вам нужно российское ОСАГО.</div>
-        </details>
-
-        <details class="bg-white rounded-xl border border-slate-200 shadow-card group">
-          <summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
-            <span data-i18n="faq7q">Можно ли оформить КАСКО?</span>
-            <svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-5 pb-4 text-sm text-slate-600" data-i18n="faq7a">Да, КАСКО оформляется добровольно. Условия и стоимость зависят от страховой компании. Напишите нам для подбора тарифа.</div>
-        </details>
-
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="bg-brand-900 rounded-2xl p-6 sm:p-8 text-center text-white mb-10">
-      <h2 class="text-2xl font-bold mb-3" data-i18n="ctaTitle">Нужна помощь с оформлением?</h2>
-      <p class="text-brand-200 mb-6 max-w-xl mx-auto" data-i18n="ctaText">Позвоните или напишите — работаем дистанционно по всей России. Поможем оформить ОСАГО даже если онлайн-калькулятор не принял документы.</p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href="tel:+79507678575" class="inline-flex items-center gap-2 bg-cta-500 hover:bg-cta-600 text-white font-semibold px-5 py-3 rounded-xl transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          <span data-i18n="ctaPhone">8 (950) 767-85-75</span>
-        </a>
-        <a href="https://t.me/+79507678575" class="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-3 rounded-xl transition-colors">
-          <span data-i18n="ctaTelegram">Написать в Telegram</span>
-        </a>
-        <a href="mailto:2020yvwvy2020@gmail.com" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3 rounded-xl transition-colors">
-          <span data-i18n="ctaEmail">Написать на почту</span>
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-brand-900 text-brand-200 py-6">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-sm text-brand-200/70 mb-3">
-        <a href="privacy.html" class="text-accent-300 hover:text-white underline underline-offset-2 transition-colors" data-i18n="footerPrivacy">Политика конфиденциальности</a>
-      </p>
-      <p class="text-xs text-brand-200/60 mb-2" data-i18n="footerNote">Сайт не является страховой компанией. Договор страхования заключается с лицензированной страховой организацией через партнёрскую платформу.</p>
-      <p class="text-xs text-brand-200/50" data-i18n="footerCopy">© 2026 Страхование ОСАГО / КАСКО. Все права защищены.</p>
-    </div>
-  </footer>
-
-  <script src="assets/site.js" defer></script>
-  <script src="assets/osago-inostrancam-i18n.js"></script>
-  <script>
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-soft">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-2">
+<a class="flex items-center gap-2 text-brand-700 hover:text-brand-900 transition-colors font-semibold shrink-0" href="index.html">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="hidden sm:inline">На главную</span>
+</a>
+<div class="flex items-center gap-2">
+<!-- Language Switcher -->
+<div class="lang-dropdown" id="i18n-switcher"><button aria-expanded="false" aria-haspopup="listbox" aria-label="Выберите язык:" class="lang-toggle" type="button"><span>🇷🇺 ru</span><span aria-hidden="true" class="lang-chevron">▾</span></button><div aria-label="Выберите язык:" class="lang-menu" role="listbox"><span aria-selected="true" class="lang-option lang-active" role="option">🇷🇺 Русский</span><a aria-selected="false" class="lang-option" href="osago-inostrancam-en.html" role="option">🇬🇧 English</a><a aria-selected="false" class="lang-option" href="osago-inostrancam-zh.html" role="option">🇨🇳 中文</a><a aria-selected="false" class="lang-option" href="osago-inostrancam-uz.html" role="option">🇺🇿 O'zbekcha</a><a aria-selected="false" class="lang-option" href="osago-inostrancam-tg.html" role="option">🇹🇯 Тоҷикӣ</a><a aria-selected="false" class="lang-option" href="osago-inostrancam-kk.html" role="option">🇰🇿 Қазақша</a><a aria-selected="false" class="lang-option" href="osago-inostrancam-ky.html" role="option">🇰🇬 Кыргызча</a><a aria-selected="false" class="lang-option" href="osago-inostrancam-hy.html" role="option">🇦🇲 Հայերեն</a><a aria-selected="false" class="lang-option" href="osago-inostrancam-ka.html" role="option">🇬🇪 ქართული</a></div></div>
+<a class="inline-flex items-center gap-1.5 bg-cta-500 hover:bg-cta-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" href="#oformit">
+<span>Оформить ОСАГО</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+<!-- Title -->
+<div class="text-center mb-10">
+<h1 class="text-3xl sm:text-4xl font-extrabold text-heading mb-3">ОСАГО для иностранных граждан</h1>
+<p class="text-lg text-slate-500 max-w-2xl mx-auto">Пошаговая инструкция по оформлению полиса ОСАГО в России для иностранных граждан</p>
+</div>
+<!-- Section: Кто может -->
+<section class="mb-10">
+<h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">1</span>
+<span>Кто может оформить ОСАГО в России</span>
+</h2>
+<p class="mb-4">Обязательное страхование автогражданской ответственности (ОСАГО) должны оформлять все владельцы транспортных средств, зарегистрированных в России, независимо от гражданства.</p>
+<div class="bg-white rounded-xl border border-slate-200 p-5 mb-4 shadow-card">
+<h3 class="font-bold text-heading mb-2">Граждане стран ЕАЭС (Евразийский экономический союз)</h3>
+<p>Беларусь, Казахстан, Армения, Кыргызстан. Водительские удостоверения этих стран признаются в России без обмена. Оформление ОСАГО — на общих основаниях.</p>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-5 mb-4 shadow-card">
+<h3 class="font-bold text-heading mb-2">Граждане других стран</h3>
+<p>Оформить ОСАГО можно, но потребуется: иностранный паспорт, водительское удостоверение (признаваемое в РФ — см. ниже), документы на автомобиль (СТС/ПТС) и временная регистрация или вид на жительство в России.</p>
+</div>
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-800 text-sm">
+<strong>⚠️</strong> <span>Важно: автомобиль должен быть зарегистрирован в России. Для автомобилей на иностранных номерах нужна «Зелёная карта» или оформление в стране регистрации ТС.</span>
+</div>
+</section>
+<!-- Section: Документы -->
+<section class="mb-10">
+<h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">2</span>
+<span>Какие документы нужны</span>
+</h2>
+<div class="space-y-4">
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
+<h3 class="font-bold text-heading mb-1">Паспорт</h3>
+<p class="text-sm">Российский или иностранный паспорт. При оформлении онлайн через калькулятор выберите тип документа «Иностранный паспорт».</p>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
+<h3 class="font-bold text-heading mb-1">Водительское удостоверение (ВУ)</h3>
+<p class="text-sm mb-2">Российское ВУ — принимается без ограничений. Иностранное ВУ — принимается, если страна выдала его по Венской конвенции 1968 года (большинство стран Европы и СНГ). Для стран вне конвенции может потребоваться международное ВУ (МВУ) или обмен на российское.</p>
+<div class="bg-green-50 border border-green-200 rounded-lg p-3 text-green-800 text-xs">
+<span>Центробанк РФ подтвердил: страховщики обязаны оформлять ОСАГО водителям с иностранными ВУ на тех же условиях, что и с российскими.</span>
+</div>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
+<h3 class="font-bold text-heading mb-1">Документы на автомобиль</h3>
+<p class="text-sm">Свидетельство о регистрации ТС (СТС) или паспорт транспортного средства (ПТС). Автомобиль должен быть зарегистрирован в РФ.</p>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-card">
+<h3 class="font-bold text-heading mb-1">Регистрация в России</h3>
+<p class="text-sm">Временная регистрация (миграционная карта с отметкой) или вид на жительство (ВНЖ). Без регистрации в РФ онлайн-оформление через виджет невозможно.</p>
+</div>
+</div>
+</section>
+<!-- Section: Как оформить -->
+<section class="mb-10" id="oformit">
+<h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-700 flex items-center justify-center text-sm font-bold">3</span>
+<span>Как оформить ОСАГО (3 шага)</span>
+</h2>
+<p class="mb-6 text-sm text-slate-500">Оформление через онлайн-калькулятор на нашем сайте. Виджет на русском языке — если вам нужна помощь, позвоните нам, мы поможем по телефону.</p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="shrink-0 w-10 h-10 rounded-full bg-cta-500 text-white flex items-center justify-center font-bold text-lg">1</div>
+<div>
+<h3 class="font-bold text-heading mb-1">Заполните калькулятор</h3>
+<p class="text-sm mb-2">Введите данные автомобиля (госномер или VIN), ваш паспорт и водительское удостоверение. Сканы загружать не нужно — всё вводится вручную.</p>
+<div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-blue-800 text-xs">Совет: номер автомобиля вводите на русской раскладке клавиатуры (А, В, Е, К, М, Н, О, Р, С, Т, У, Х).</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 w-10 h-10 rounded-full bg-cta-500 text-white flex items-center justify-center font-bold text-lg">2</div>
+<div>
+<h3 class="font-bold text-heading mb-1">Выберите тариф и оплатите</h3>
+<p class="text-sm">Система покажет предложения страховых компаний. Выберите подходящий тариф и оплатите картой. Электронный полис придёт на e-mail.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 w-10 h-10 rounded-full bg-cta-500 text-white flex items-center justify-center font-bold text-lg">3</div>
+<div>
+<h3 class="font-bold text-heading mb-1">Не получилось? Напишите или позвоните</h3>
+<p class="text-sm mb-3">Если виджет не принял документы или появилась ошибка — позвоните или напишите нам. Мы поможем оформить вручную.</p>
+<div class="flex flex-wrap gap-2">
+<a class="inline-flex items-center gap-1 bg-brand-700 hover:bg-brand-800 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" href="tel:+79507678575">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Позвонить</span>
+</a>
+<a class="inline-flex items-center gap-1 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" href="https://t.me/+79507678575">
+<span>Написать в Telegram</span>
+</a>
+<a class="inline-flex items-center gap-1 bg-slate-600 hover:bg-slate-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors" href="mailto:yvwvy@ya.ru">
+<span>Написать на почту</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Widget -->
+<div class="iframe-wrap mt-8 bg-white rounded-xl border border-slate-200 shadow-card">
+<iframe class="w-full border-0" data-src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c" id="pampadu-widget" loading="lazy" src="about:blank" title="Калькулятор ОСАГО"></iframe>
+</div>
+<p class="mt-3 text-sm text-slate-500 text-center">
+<span>Оформление через онлайн-калькулятор на нашем сайте. Виджет на русском языке — если вам нужна помощь, позвоните нам, мы поможем по телефону.</span>
+</p>
+</section>
+<!-- Section: Ограничения -->
+<section class="mb-10">
+<h2 class="text-xl font-bold text-heading mb-4 flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center text-sm font-bold">!</span>
+<span>Важные ограничения</span>
+</h2>
+<ul class="space-y-3">
+<li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
+<span class="shrink-0 text-lg">1.</span>
+<span>Вероятность одобрения полиса по иностранным документам ниже, чем по российским. Это связано с особенностями автоматической проверки документов страховыми компаниями.</span>
+</li>
+<li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
+<span class="shrink-0 text-lg">2.</span>
+<span>Без временной регистрации или ВНЖ в России онлайн-оформление невозможно — система не пропустит.</span>
+</li>
+<li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
+<span class="shrink-0 text-lg">3.</span>
+<span>Автомобиль должен быть зарегистрирован в РФ. Для машин с иностранными номерами ОСАГО не оформляется — нужна «Зелёная карта».</span>
+</li>
+<li class="flex gap-3 bg-red-50 border border-red-100 rounded-xl p-4 text-sm text-red-800">
+<span class="shrink-0 text-lg">4.</span>
+<span>Водительские удостоверения стран, не входящих в Венскую конвенцию 1968 года, могут не приниматься онлайн. В этом случае обращайтесь к нам — поможем разобраться.</span>
+</li>
+</ul>
+</section>
+<!-- Section: FAQ -->
+<section class="mb-10">
+<h2 class="text-xl font-bold text-heading mb-6">Частые вопросы</h2>
+<div class="space-y-4">
+<details class="bg-white rounded-xl border border-slate-200 shadow-card group">
+<summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
+<span>Могу ли я оформить ОСАГО без российского паспорта?</span>
+<svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</summary>
+<div class="px-5 pb-4 text-sm text-slate-600">Да. Для онлайн-оформления через виджет выберите тип документа «Иностранный паспорт». У вас должна быть временная регистрация или ВНЖ в России.</div>
+</details>
+<details class="bg-white rounded-xl border border-slate-200 shadow-card group">
+<summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
+<span>Моё водительское удостоверение (другой страны) подойдёт?</span>
+<svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</summary>
+<div class="px-5 pb-4 text-sm text-slate-600">Если ваша страна участвует в Венской конвенции о дорожном движении 1968 года (большинство стран СНГ, Европы и многие другие) — да, ваше национальное ВУ подойдёт. Для других стран может потребоваться международное ВУ.</div>
+</details>
+<details class="bg-white rounded-xl border border-slate-200 shadow-card group">
+<summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
+<span>Сколько стоит ОСАГО?</span>
+<svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</summary>
+<div class="px-5 pb-4 text-sm text-slate-600">Стоимость зависит от региона, мощности двигателя, стажа водителей и бонуса-малуса (КБМ). Пример: для легкового автомобиля B-класса с 1 водителем в регионе III — от ~4 200 ₽. Точную стоимость покажет калькулятор.</div>
+</details>
+<details class="bg-white rounded-xl border border-slate-200 shadow-card group">
+<summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
+<span>Сколько времени занимает оформление?</span>
+<svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</summary>
+<div class="px-5 pb-4 text-sm text-slate-600">Около 60 минут при самостоятельном заполнении. Если возникнут сложности — звоните, поможем.</div>
+</details>
+<details class="bg-white rounded-xl border border-slate-200 shadow-card group">
+<summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
+<span>Что делать, если виджет не принимает мои документы?</span>
+<svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</summary>
+<div class="px-5 pb-4 text-sm text-slate-600">Позвоните или напишите нам — мы поможем оформить полис вручную через страховую компанию. Телефон и Telegram указаны выше.</div>
+</details>
+<details class="bg-white rounded-xl border border-slate-200 shadow-card group">
+<summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
+<span>Нужна ли «Зелёная карта»?</span>
+<svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</summary>
+<div class="px-5 pb-4 text-sm text-slate-600">«Зелёная карта» нужна для автомобиля, зарегистрированного за рубежом и временно въезжающего в Россию. Если ваш автомобиль зарегистрирован в РФ — вам нужно российское ОСАГО.</div>
+</details>
+<details class="bg-white rounded-xl border border-slate-200 shadow-card group">
+<summary class="px-5 py-4 cursor-pointer font-semibold text-heading hover:text-brand-700 transition-colors flex items-center justify-between">
+<span>Можно ли оформить КАСКО?</span>
+<svg class="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180 shrink-0 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</summary>
+<div class="px-5 pb-4 text-sm text-slate-600">Да, КАСКО оформляется добровольно. Условия и стоимость зависят от страховой компании. Напишите нам для подбора тарифа.</div>
+</details>
+</div>
+</section>
+<!-- CTA -->
+<section class="bg-brand-900 rounded-2xl p-6 sm:p-8 text-center text-white mb-10">
+<h2 class="text-2xl font-bold mb-3">Нужна помощь с оформлением?</h2>
+<p class="text-brand-200 mb-6 max-w-xl mx-auto">Позвоните или напишите — работаем дистанционно по всей России. Поможем оформить ОСАГО даже если онлайн-калькулятор не принял документы.</p>
+<div class="flex flex-wrap justify-center gap-3">
+<a class="inline-flex items-center gap-2 bg-cta-500 hover:bg-cta-600 text-white font-semibold px-5 py-3 rounded-xl transition-colors" href="tel:+79507678575">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>8 (950) 767-85-75</span>
+</a>
+<a class="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-3 rounded-xl transition-colors" href="https://t.me/+79507678575">
+<span>Написать в Telegram</span>
+</a>
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3 rounded-xl transition-colors" href="mailto:yvwvy@ya.ru">
+<span>Написать на почту</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-brand-900 text-brand-200 py-6">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+<p class="text-sm text-brand-200/70 mb-3">
+<a class="text-accent-300 hover:text-white underline underline-offset-2 transition-colors" href="privacy.html">Политика конфиденциальности</a>
+</p>
+<p class="text-xs text-brand-200/60 mb-2">Сайт не является страховой компанией. Договор страхования заключается с лицензированной страховой организацией через партнёрскую платформу.</p>
+<p class="text-xs text-brand-200/50">© 2026 Страхование ОСАГО / КАСКО. Все права защищены.</p>
+</div>
+</footer>
+<script defer="" src="assets/site.min.js"></script>
+<script defer="" src="assets/ADMINKA.js"></script>
+<script defer="" src="assets/cookie-banner.js"></script>
+<script>
     // Ленивая загрузка виджета — подставляем src при приближении к viewport
     (function () {
       var iframe = document.getElementById('pampadu-widget');

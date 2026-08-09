@@ -9,9 +9,9 @@
 
   <script src="assets/env.js"></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap&subset=cyrillic,cyrillic-ext,latin,latin-ext">
+  <!-- Шрифты теперь захостены локально (assets/fonts.css) — убран блокирующий
+       запрос к fonts.googleapis.com из критического пути отрисовки. -->
+  <link rel="stylesheet" href="assets/fonts.css">
 
   <style>
     html, body {
@@ -198,7 +198,7 @@
       font-family: 'Onest', system-ui, sans-serif !important;
     }
   </style>
-  <link rel="stylesheet" href="assets/site-ui.css">
+  <link rel="stylesheet" href="assets/site-ui.min.css">
   <style>
     .page-crumbs {
       margin: 0 0 1rem;
@@ -384,7 +384,6 @@
           data-src="https://b2c.pampadu.ru/index.html#79694340-e28e-48b1-bde4-448851f9a53c"
           id="ppdwi"
           loading="lazy"
-          scrolling="no"
           referrerpolicy="strict-origin-when-cross-origin"
           sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
           title="Оформление ОСАГО и КАСКО онлайн для Санкт-Петербурга"
@@ -492,8 +491,9 @@
           <a href="tel:+79507678575" class="cta-phone phone-large inline-block font-extrabold text-white hover:text-cta-100 transition-colors duration-300 tracking-tight px-2">
             8 (950) 767-85-75
           </a>
-          <a href="mailto:2020yvwvy2020@gmail.com?subject=%D0%9E%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%9E%D0%A1%D0%90%D0%93%D0%9E" class="cta-email block text-brand-100 hover:text-white transition-colors duration-300 px-2 break-all">
-            2020yvwvy2020@gmail.com
+          <a href="mailto:yvwvy@ya.ru?subject=%D0%9E%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%9E%D0%A1%D0%90%D0%93%D0%9E" class="cta-email inline-flex items-center gap-1.5 text-brand-100 hover:text-white transition-colors duration-300 px-2">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Написать на почту
           </a>
 
           <div class="cta-actions flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center max-w-lg sm:max-w-none mx-auto">
@@ -538,8 +538,9 @@
           <a href="tel:+79507678575" class="text-white font-medium hover:text-cta-100 transition-colors duration-300 whitespace-nowrap">
             8 (950) 767-85-75
           </a>
-          <a href="mailto:2020yvwvy2020@gmail.com" class="text-brand-200 hover:text-cta-100 transition-colors duration-300 break-all">
-            2020yvwvy2020@gmail.com
+          <a href="mailto:yvwvy@ya.ru" class="inline-flex items-center gap-1.5 text-brand-200 hover:text-cta-100 transition-colors duration-300">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Написать на почту
           </a>
         </div>
       </div>
@@ -587,7 +588,7 @@
     });
   </script>
   <script src="assets/ADMINKA.js" defer></script>
-  <script src="assets/site.js" defer></script>
+  <script src="assets/site.min.js" defer></script>
   <script src="assets/cookie-banner.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {

@@ -823,6 +823,8 @@
       min-height: 480px;
       max-height: 900px;
       background: #f8fafc;
+      /* Заменяет устаревший HTML-атрибут scrolling="no" (не валиден по HTML5). */
+      overflow: hidden;
     }
 
     @media (min-width: 640px) {
@@ -2934,3 +2936,73 @@
       from { opacity: 0; transform: translateY(8px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
+
+    /* Переключатель языков на странице "ОСАГО для иностранцев" (osago-inostrancam*.html).
+       Компактный дропдаун в шапке — вдохновлён паттерном с сайта elenaperm.ru, но собран
+       на собственных цветовых токенах ОСАГО-проекта (--color-brand/--color-cta) и на
+       обычных <a href> — переключение языка остаётся настоящей навигацией на отдельный
+       статический URL, а не JS-подменой текста. */
+    .lang-dropdown {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 10px;
+      border-radius: 9px;
+      border: 1.5px solid var(--color-brand-100);
+      background: #fff;
+      color: var(--color-brand-dark);
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color .2s cubic-bezier(.25,.46,.45,.94), background .2s cubic-bezier(.25,.46,.45,.94);
+    }
+    .lang-toggle:hover { border-color: var(--color-brand); }
+    .lang-chevron { font-size: 0.6rem; opacity: .6; transition: transform .2s cubic-bezier(.25,.46,.45,.94); }
+    .lang-dropdown.open .lang-chevron { transform: rotate(180deg); }
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 172px;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid var(--color-brand-100);
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(11,37,69,.14);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity .18s cubic-bezier(.25,.46,.45,.94), transform .18s cubic-bezier(.25,.46,.45,.94), visibility .18s;
+      z-index: 130;
+    }
+    .lang-dropdown.open .lang-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--color-brand-dark);
+      font-family: inherit;
+      font-size: 0.8125rem;
+      text-decoration: none;
+      text-align: left;
+      cursor: pointer;
+      transition: background .15s cubic-bezier(.25,.46,.45,.94);
+    }
+    a.lang-option:hover { background: var(--color-brand-50); }
+    .lang-option.lang-active { background: var(--color-brand-50); color: var(--color-cta-hover); cursor: default; font-weight: 600; }
+    @media (max-width: 479px) {
+      .lang-toggle { padding: 6px 8px; font-size: 0.75rem; }
+      .lang-menu { min-width: 156px; }
+    }
+
