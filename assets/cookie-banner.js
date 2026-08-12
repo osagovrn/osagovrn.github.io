@@ -106,9 +106,18 @@
     // На странице политики/404 Метрики нет — баннер не нужен
     if (window.__osagoHasAnalytics === false) return;
 
-    if (hasConsent()) {
-      // Согласие уже дано ранее — запускаем аналитику сразу
+    var cfg = (window.SITE && window.SITE.analytics) || {};
+
+    if (hasConsent() || cfg.startAnalyticsBeforeConsent) {
+      // Согласие уже дано ранее, ИЛИ временно включён режим
+      // "стартовать до согласия" (см. site.config.js) — запускаем аналитику сразу.
       startAnalytics();
+      // Если согласия формально ещё нет — баннер всё равно показываем
+      // (спросить его — отдельная задача от запуска счётчика).
+      if (!hasConsent()) {
+        if (document.body) showBanner();
+        else document.addEventListener('DOMContentLoaded', showBanner);
+      }
       return;
     }
 

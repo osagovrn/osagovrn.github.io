@@ -8,12 +8,19 @@ window.SITE = {
   },
   verify: {
     yandex: '1af17763f142092c',
-    google: ''
+    google: '8VoIMzv_4PGoiuIZh7n_c9Z_CYs3XUdafGiMlQn1zqc'
   },
   analytics: {
     yandexMetrikaId: '109807317',
     googleAnalyticsId: '',
     googleAdsId: '',
+    // ВРЕМЕННО (на период рекламной кампании в Яндекс.Директ): Метрика стартует
+    // сразу при заходе на сайт, не дожидаясь клика "ОК" на cookie-баннере.
+    // Баннер по-прежнему показывается (это отдельный вопрос — согласие всё ещё
+    // спрашивается), но сам факт показа баннера больше не блокирует сбор статистики.
+    // Когда кампания закончится — верните false, чтобы вернуть прежнее поведение
+    // (Метрика стартует только после явного согласия).
+    startAnalyticsBeforeConsent: true,
     // Цели JavaScript (reachGoal) — создать в Метрике: Настройки → Цели → JavaScript-событие
     metrikaGoals: [
       { id: 'click_phone', label: 'Звонок (tel:)', direct: true },
