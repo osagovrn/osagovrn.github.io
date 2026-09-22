@@ -214,8 +214,8 @@
       "style-src 'self' 'unsafe-inline'; " +
       "font-src 'self' data:; " +
       "img-src 'self' data: https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org; " +
-      "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.google-analytics.com https://www.googletagmanager.com; " +
-      "frame-src https://b2c.pampadu.ru https://yandex.ru; " +
+      "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.google-analytics.com https://www.googletagmanager.com wss://mc.yandex.ru wss://mc.yandex.com wss://mc.webvisor.org; " +
+      "frame-src https://b2c.pampadu.ru https://yandex.ru https://mc.yandex.ru https://mc.yandex.com; " +
       "base-uri 'self'; form-action 'self'; object-src 'none'; " +
       'upgrade-insecure-requests';
     document.head.appendChild(csp);
