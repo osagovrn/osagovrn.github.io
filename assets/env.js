@@ -210,7 +210,7 @@
     // работает только через HTTP-заголовок (см. _headers/.htaccess/web.config/vercel.json).
     csp.content =
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.googletagmanager.com; " +
+      "script-src 'self' 'unsafe-inline' https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org https://www.googletagmanager.com https://b2c.pampadu.ru; " +
       "style-src 'self' 'unsafe-inline'; " +
       "font-src 'self' data:; " +
       "img-src 'self' data: https://mc.yandex.ru https://mc.yandex.com https://mc.webvisor.org; " +
