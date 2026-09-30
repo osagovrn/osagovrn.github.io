@@ -21,7 +21,7 @@
       address: legal.address || '',
       addressNote: legal.addressNote || '',
       role: legal.role || 'Консультации и помощь в оформлении полисов ОСАГО и КАСКО. Сайт не является страховой компанией.',
-      phone: legal.phone || '+79507678575',
+      phone: legal.phone || '+79113756988',
       email: legal.email || 'yvwvy@ya.ru'
     };
   }
