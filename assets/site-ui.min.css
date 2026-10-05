@@ -6,7 +6,7 @@
 .prop-banner__text{flex:1 1 auto}
 .prop-banner__title{margin:0 0 .1rem;color:#7C2D12;font-family:'Onest',system-ui,sans-serif;font-weight:700;font-size:clamp(.95rem,1vw + .6rem,1.1rem);line-height:1.25}
 .prop-banner__desc{margin:0;color:#92400E;font-size:.8rem;line-height:1.4}
-.prop-banner__desc strong{color:#7C2D12}
+.prop-banner__desc strong{color:#7C2D12;text-transform:uppercase}
 .prop-banner__cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;background:#B45309;color:#fff;font-weight:700;text-decoration:none;padding:.5rem .85rem;border-radius:.6rem;white-space:nowrap;font-size:.85rem;transition:background-color .2s ease}
 .prop-banner__cta:hover{background:#92400E}
 @media (min-width:640px){.prop-banner__inner{flex-direction:row;text-align:left;gap:.9rem;padding:.7rem 1.25rem}}
